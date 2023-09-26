@@ -1,0 +1,20 @@
+#separator:tab
+#html:true
+#tags column:3
+create an array of objects, called people that has only objects that have a string value for a name key &amp; a number value for an age key.	let people: {<br>&nbsp; &nbsp; name: string;<br>&nbsp; &nbsp; age: number;<br>}[];	
+create a person object with a string for a name key &amp; a number for an age key	let person: {<br>&nbsp; &nbsp; name: string;<br>&nbsp; &nbsp; age: number;<br>};	
+"implict type script<br>let course = ""React - the complete guide'"	when you assign a value to a variable the type of value it is implies the typescript:<br>so by assigning a string to course if you try to reassign string to a number, you will get an error	
+union types	is a type definition that allows more than one type	
+example of a union type for variable course	let course: string | number&nbsp;<br>you can have as many types as you want	
+type alias	define your own base type in which a more complex definition is stored instead of repeating entire definitions	
+Alias&nbsp;	will have a type definition on the right side of the equal sign<br>Person is the type name<br>type Person =&nbsp; {<br>&nbsp; &nbsp; name: string;<br>&nbsp; &nbsp; age: number;<br>};<br>can then use that in other variable to define their type<br>let person: Person;<br>let people: Person[];	
+functions &amp; types	can set types for parameters<br>infers the type of the return value&nbsp;<br>can explicity select a return type<br>	
+if a function returns nothing&nbsp;	the return type is void	
+typescript types	number, string, boolean, any	
+can say any type of array values	array: any[]	
+generics	generics give you a way to say that certain values need to be the same type, regardless of that specific type	
+generics example: the example says that function insertAtBeginning will take an array of a specific type and a value of the same type	function insertAtBeginning&lt;T&gt;(array: T[], value: T) {<br>&nbsp; &nbsp; const newArray = [value, ...array];<br>&nbsp; &nbsp; return newArray;<br>}	
+classes with typescript how to use to specify type &amp; public/private	class Student {<br>&nbsp; &nbsp; constructor{<br>&nbsp; &nbsp; &nbsp; &nbsp; public firstName: string,<br>&nbsp; &nbsp; &nbsp; &nbsp; public lastName: string<br>&nbsp; &nbsp; &nbsp; &nbsp; public age: number,<br>&nbsp; &nbsp; &nbsp; &nbsp; private courses: string[]<br>&nbsp; &nbsp; } {}	
+interfaces require that a class object matches the interface structure	object type definitions<br>interface Human {<br>&nbsp; &nbsp; firstName: string;<br>&nbsp; &nbsp; age: number;<br>&nbsp;<br>&nbsp; &nbsp; greet: ) =&gt; void;<br>}<br>can be implimented by classes	
+let students: Array&lt;number&gt; = [1,2,3,4]	let students: string[] = ['q','a','f']	
+an array of any types	let mixedBag: any[]	
