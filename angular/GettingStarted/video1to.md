@@ -39,3 +39,27 @@ every click changes the single page because it uses javacript to modify the dom
 - the script imports are injected dynamically to replace app-root with our component(s)
 - we get name from app component ts & stick it in the html when called
 - [(ngModel)] = a directive that says to listen to the input & store it in name property/model & output the value of the name model in the  input
+- app.module.ts is where tell angular which pieces belong to our app 
+    - app.module.ts is where we add something to import to import another package from angular (FormsMOdule from '@angular/forms) (becaue that specific directive is a forms feature)
+
+## Course Structure
+- Next The Basics
+- then Components & Databinding
+- Directives
+- Services & Dependency Injection
+- Routing
+- Observables
+- Forms
+- Pipes
+- Http
+- Authentication
+- Optimizations & NgModels
+- Deploying
+- Anicmations & Testing
+
+## How to get the Most out of the Course
+- watch the videos
+- do the assignments
+- do the course project
+- ask in Q&A (and answer)
+
