@@ -63,3 +63,7 @@ every click changes the single page because it uses javacript to modify the dom
 - do the course project
 - ask in Q&A (and answer)
 
+## What is TypeScript?
+- superset of js
+- good for strong typing
+- doesn't run in the browser & needs to be compiled
