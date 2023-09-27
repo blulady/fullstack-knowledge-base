@@ -1,5 +1,4 @@
-
-Watch & Code Along: Begin by watching the current video segment. As you watch, actively code along to gain hands-on experience, which aids in understanding and retaining the content. For your code-along, create a separate repository where you'll save and commit your code. For this section, the newly created repository can be called "academind-typescript-code-along".
+1.Watch & Code Along: Begin by watching the current video segment. As you watch, actively code along to gain hands-on experience, which aids in understanding and retaining the content. For your code-along, create a separate repository where you'll save and commit your code. For this section, the newly created repository can be called "academind-typescript-code-along".
 Immediate Documentation: After finishing a video segment, pause and document your key takeaways and areas of uncertainty in the respective markdown files either "Getting Started" or "Basics" in "fullstack-knowledge-base".
 Seek Clarification: If content isn't clear, consider:
 
@@ -34,3 +33,9 @@ every click changes the single page because it uses javacript to modify the dom
 
 ## Editing our first app
 
+- files we want to modify are inside src
+- SPA in in app/app.component.html
+- app-root is a div in the html, mentioned in the .ts file (under the component as the selector(and it selects the div in the html))
+- the script imports are injected dynamically to replace app-root with our component(s)
+- we get name from app component ts & stick it in the html when called
+- [(ngModel)] = a directive that says to listen to the input & store it in name property/model & output the value of the name model in the  input
