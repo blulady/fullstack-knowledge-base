@@ -23,4 +23,19 @@
 - breaks it into reusable parts
 - easier to update, exchange & is reusable
 
+## Creating a New Component 
+- start with the app component serves as the root component
+- AppComponent is list in the end of the bootstrap array in app.model.ts & that the component angular boostraps the whole appication
+1. store the new component in a subfolder of the app directory (this is where app related content goes)
+2. make the folder name the same as your component name (each component should have it's own folder)
+3. name_of_component.component.ts
+    - in file export class Name_of_componentComponent
+    - will need the @Component() decorator (& import it)
+    - in the component decorator will need to put the html selector naming convention 'app-server'
+    - will need a name_of_component.component.html file
+    - assign the pathway of the file to templateUrl in the component ts file
+
+    create a ts file in the component folder
+        import compent class & decorator from angular/core
+        link the pathway to the html file/create html file
 
