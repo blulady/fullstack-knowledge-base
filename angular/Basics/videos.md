@@ -15,5 +15,12 @@
     -then angular reads the app.component.ts into the index.html file
 
     ## Components are Important
+- angular is a js framework changing your DOM ('HTML') at run time
+- components are a key feature in angular
+- whole application is made from a couple of components
+- root componet that contains the entire application
+- each component has it's own html, own styling & own business logic
+- breaks it into reusable parts
+- easier to update, exchange & is reusable
 
 
