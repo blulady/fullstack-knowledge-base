@@ -35,7 +35,16 @@
     - will need a name_of_component.component.html file
     - assign the pathway of the file to templateUrl in the component ts file
 
-    create a ts file in the component folder
+    create a component folder
+        create a ts file in the component folder
         import compent class & decorator from angular/core
         link the pathway to the html file/create html file
+
+## Understanding the Role of AppModule & Component Declaration
+ - angular bundles modules into packages
+ - module: a bundle of functionalities of our app (what features does my app have/use)
+ - starts as an empty Typescript class & then add the decorator
+ - bootstrap is responsible for telling angular which component you should start with (recognize in the index.html)
+ - have to register the new compoent in the declarations array under AppComponent
+ - have to import the file, extension is bundled automatically
 
