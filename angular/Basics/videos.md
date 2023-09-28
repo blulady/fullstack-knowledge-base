@@ -48,3 +48,6 @@
  - have to register the new compoent in the declarations array under AppComponent
  - have to import the file, extension is bundled automatically
 
+ ## Using Custom Components
+ - add the app-server html selector to the app.component.html
+
