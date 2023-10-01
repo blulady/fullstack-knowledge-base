@@ -64,4 +64,19 @@
  - can add css stiles in the app.component.css file or inline in the app.component.ts (currently this is the only one working)
  - styles/styles url is an array so you can have more than one
  
-
+ ## Fully Understanding the Component Selector
+ - can use a different type of selector
+ - app-server is treated like an css selector so you are not limited to selecting by element
+    - can select elements by attribute by enclosing that attribute in squared brackets
+        - in servers.component.ts
+            @component({
+                selector: '[app-servers]',
+            })
+        - include in html by <div app-servers>
+    - can select by class
+        - in servers.component.ts
+            @component({
+                selector: '.app-servers',
+            })
+        - include in html by <div class="app-servers">
+    - NOT by id or psudo-selectors (hover)
