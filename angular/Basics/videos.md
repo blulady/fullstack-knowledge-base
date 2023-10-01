@@ -80,3 +80,7 @@
             })
         - include in html by <div class="app-servers">
     - NOT by id or psudo-selectors (hover)
+
+
+## Understanding Databinding
+- communication between the typescript (buisness logic) and the template (html)
