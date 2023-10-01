@@ -58,3 +58,10 @@
 ## Working with component Templates
  - can add components directly to the template in app.component.ts by adding selector to the template (after changing templateUrl to template)
  - can add html directtly inline template
+ - have to have either a template or templateUrl, it is the one property that you have to have at all times
+
+ ## Working with Component styles
+ - can add css stiles in the app.component.css file or inline in the app.component.ts (currently this is the only one working)
+ - styles/styles url is an array so you can have more than one
+ 
+
