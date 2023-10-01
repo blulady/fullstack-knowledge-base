@@ -84,3 +84,19 @@
 
 ## Understanding Databinding
 - communication between the typescript (buisness logic) and the template (html)
+- output data
+    - done with string interpolation {{ data }}
+    - or property binding [property] = "data"
+    - clicking a button (html) should trigger something in typescript code
+- reacting to user events
+    - with event binding
+- Two-Way-Binding
+    - able to react events & output something at the same time
+
+## String Interpolation
+- can hardcode a string directly between {{}} like {{ server }}
+- only condition of what's between the curly braces, is to return a string 
+    - could call a method that returns a string
+    - can't write multiline/block expressions (no logic, if/for/while)
+
+
