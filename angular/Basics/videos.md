@@ -104,3 +104,9 @@
 - moving a element's property (like disabled) allow us to dynamically bind the propert & disable the HTML attribute
 - by using the brackets we are directly binding to the native disabled property 
 
+## Property Binding vs String Interpolation
+- <p> {{ allowNewServer }}</p>
+  <p [innerText]="allowNewServer"></p>
+- if you want to outpust something in your template, print some text to it use string interpolation
+- if you want to change a property (of an html element, directive or component) use property binding
+- don't mix
