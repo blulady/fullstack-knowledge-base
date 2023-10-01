@@ -51,3 +51,10 @@
  ## Using Custom Components
  - add the app-server html selector to the app.component.html
 
+## Creating COmponents with the CLI & Nesting Components
+ - will create a new component for you
+    $ng g c servers
+
+## Working with component Templates
+ - can add components directly to the template in app.component.ts by adding selector to the template (after changing templateUrl to template)
+ - can add html directtly inline template
