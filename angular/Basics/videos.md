@@ -98,5 +98,9 @@
 - only condition of what's between the curly braces, is to return a string 
     - could call a method that returns a string
     - can't write multiline/block expressions (no logic, if/for/while)
+- added variables to .ts component file & called them in html
 
+## Property Binding
+- moving a element's property (like disabled) allow us to dynamically bind the propert & disable the HTML attribute
+- by using the brackets we are directly binding to the native disabled property 
 
