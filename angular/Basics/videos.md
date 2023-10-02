@@ -144,3 +144,8 @@
     serverName = '';
 - create an html element we can output the event data to 
     <p>{{ serverName }} </p>
+
+## Two Way Databinding
+- easier way to bind data ngModel
+- to use ngModel you have to import the FormsModule @angular/forms needs to by added to your import[] in the AppModule (would be there by default if you used the CLI)
+-
