@@ -127,4 +127,20 @@
         <button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
     - can add small amounts of logic inline in html
     
-
+## Passing & Using Data with Event Binding
+- create an input form in .html
+    <input type="text" class="form-control" (input)="">
+    *(input) is a normal DOM event provided by the input element which is fired whenever the user types
+- create a function to do something with said input .ts
+    onUpdateServerName(event: any) {
+    this.serverName = event.target.value;
+    // we found the target (element on which the event occured by using console.log(event)
+  }
+- add function to html
+    <input type="text" class="form-control" (input)="onUpdateServerName($event)">
+    - $event is a reserved variable name you can use in the template when using event binding
+    - $event will be the data emitted with that event or how we capture the data & pass it as an argument to the function we are calling
+- create a variable in ts that we can output the event data to
+    serverName = '';
+- create an html element we can output the event data to 
+    <p>{{ serverName }} </p>
