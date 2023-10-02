@@ -110,3 +110,21 @@
 - if you want to outpust something in your template, print some text to it use string interpolation
 - if you want to change a property (of an html element, directive or component) use property binding
 - don't mix
+
+## Event Binding
+- () in html are the signal we are event binding
+- the syntax that angular uses is click vs onClick, mouseEnter vs onMouseEnter
+- output the value of a property that changes with a button
+    - create variable in .ts 
+        serverCreationStatus = 'No server was created!';
+    - create an html element for it to output too in .html
+        <p>{{ serverCreationStatus }}</p>
+    - create the method to make the change in .ts
+          onCreateServer() {
+            this.serverCreationStatus = 'Server was created';
+        }
+    - add it to the button in .html
+        <button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+    - can add small amounts of logic inline in html
+    
+
