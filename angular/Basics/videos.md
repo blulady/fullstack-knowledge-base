@@ -210,3 +210,9 @@
             }
         `]
     })
+
+    ## Outputting lists with ngFor
+    - add an array in ts
+    - use a function to push to that array (that's connected to a button)
+    - add the *ngFor to a component you built
+    - <app-server *ngFor="let server of servers"></app-server>
