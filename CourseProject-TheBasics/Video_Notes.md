@@ -22,3 +22,11 @@
     - ingredients: name & amount
     - recipe: title, description, ingredients
 
+## Setting up the Application 
+- ng new recipies_shopping --no-strict
+- npm install --save bootstrap
+- add Bootstrap node_modules/bootstrap/dist/css/bootstrap.min.css to the styles[] array in angular.json
+- clear the title in app.componet.ts & the app.component.html file
+
+## Creating the Components
+- 
