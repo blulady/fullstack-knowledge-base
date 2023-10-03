@@ -147,5 +147,22 @@
 
 ## Two Way Databinding
 - easier way to bind data ngModel
-- to use ngModel you have to import the FormsModule @angular/forms needs to by added to your import[] in the AppModule (would be there by default if you used the CLI)
--
+- to use ngModel you have to import the FormsModule @angular/forms needs to by added to your import[] in the AppModule
+- use ngModel in your html file
+    <input type="text" class="form-control"
+    [(ngModel)]="serverName">
+    - this will trigger on the input event & update the value of server name in our component
+    - it will also update the value of the input element
+    
+## Combining all Forms of Databinding
+- add functionality of displaying server name on button click
+    onCreateServer() {
+    this.serverCreationStatus = this.serverName + ' was created';
+  }
+
+## Understanding Directives
+- directives are instructions in the DOM (like components)
+- components are directives with a template
+- add directives with an attributes selector
+- use the @Directive decorator to tell angular it's a directive
+
