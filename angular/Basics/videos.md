@@ -191,3 +191,22 @@
     return this.serverStatus === 'online' ? 'green' : 'red';
     }
 
+## Styling elements Dynamically with ngClass
+- ngClass allows us to dynamically add css classes
+- only works when using property binding (use [])
+- also need to pass a JS object
+- each property you bind to may take a different value (here it's the js object)
+- has key value pairs (keys=CSS class name & values are the conditions)
+    -html
+    <p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{online: serverStatus === 'online'}">
+  Server with ID {{ serverId }} is {{ serverStatus}} </p>
+    -ts
+    @Component({
+    selector: 'app-server',
+    templateUrl:"./server.component.html",
+    styles: [`
+    .online {
+        color: white;
+            }
+        `]
+    })
