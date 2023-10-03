@@ -211,8 +211,17 @@
         `]
     })
 
-    ## Outputting lists with ngFor
+## Outputting lists with ngFor
     - add an array in ts
     - use a function to push to that array (that's connected to a button)
     - add the *ngFor to a component you built
     - <app-server *ngFor="let server of servers"></app-server>
+
+## Getting the Index when using ngFor
+- push new Date() to log instead of plus one
+  this.log.push(new Date());
+- check index by
+  <div *ngFor="let logItem of log; let i = index"
+  [ngStyle]="{backgroundColor: i >= 4? 'blue': 'transparent'}"
+  [ngClass]="{'white-text':logItem >= 4}"
+  > {{ logItem }} </div>
