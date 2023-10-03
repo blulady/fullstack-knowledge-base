@@ -29,4 +29,7 @@
 - clear the title in app.componet.ts & the app.component.html file
 
 ## Creating the Components
-- 
+- to nest a component you can cd into the folder you want to create them for or
+  ng g c recipes/recipe-list --spec false
+    parent folder/new_component
+    
