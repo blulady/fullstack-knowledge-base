@@ -12,6 +12,8 @@ export class ServersComponent {
   serverName = 'TestServer';
   serverCreated = false;
   servers = ['Testserver', 'Testserver 2'];
+  showSecret = false;
+  log = [];
 
   constructor(){
     setTimeout(() => {
@@ -25,5 +27,9 @@ export class ServersComponent {
   }
   onUpdateServerName(event: any) {
     this.serverName = event.target.value;
+  }
+  onToggleDisplay() {
+    this.showSecret = !this.showSecret;
+    this.log.push(this.log.length + 1);
   }
 }
