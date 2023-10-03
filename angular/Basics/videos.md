@@ -170,3 +170,15 @@
 - directive shipping
 - the ngIf directive
 - *ngIf inside the html element
+    <p *ngIf="serverCreated">THe server was created, the server name is {{serverName}} </p>
+    -serverCreated just needs to provide a bool
+
+## Enhancing ngIf with an Else Condition
+- if you want to add an else clause
+- modify the *ngIf by adding an else clause at the end with a local refrence in this case noServer
+- add an ng template with the local refrence & put what you want to display otherwise in the template
+- with the ng template we mark that spot in the template
+    <p *ngIf="serverCreated; else noServer">THe server was created, the server name is {{serverName}} </p>
+    <ng-template #noServer>
+    <p>No server was created</p>
+    </ng-template>
