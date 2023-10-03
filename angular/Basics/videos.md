@@ -182,3 +182,12 @@
     <ng-template #noServer>
     <p>No server was created</p>
     </ng-template>
+
+## Styling elements Dynamically with ngStyle
+- attribute directives don't add or remove elements, they only change the element they were placed on
+- add ngStyle to an element & then define the property (with a function or just a color)
+    <p [ngStyle]="{backgroundColor: getColor()}"
+    getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
+    }
+
