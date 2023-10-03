@@ -166,3 +166,7 @@
 - add directives with an attributes selector
 - use the @Directive decorator to tell angular it's a directive
 
+## Using ngif to Output Data
+- directive shipping
+- the ngIf directive
+- *ngIf inside the html element
