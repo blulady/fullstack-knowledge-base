@@ -56,3 +56,8 @@
 - create a new file in recipe-book called recipe.model.ts
     - this is where we define our recipe class (what a recipe looks like) using vanilla typescript
 
+## Adding Content to the Recipes Components
+- here we type the array with the recipe model in the recipe-list component
+- we create a test model
+- we format the recipe-list.component.html to print out the list of our recipe items
+    an impressive demonstration of the full use of bootstrap
