@@ -61,3 +61,8 @@
 - we create a test model
 - we format the recipe-list.component.html to print out the list of our recipe items
     an impressive demonstration of the full use of bootstrap
+
+## Outputting a List of Recipes with ngFor
+- we plug the logic into the html for displaying a list of recipes using
+    -ngFor
+    & property binding for the img
