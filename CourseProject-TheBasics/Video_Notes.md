@@ -32,4 +32,20 @@
 - to nest a component you can cd into the folder you want to create them for or
   ng g c recipes/recipe-list --spec false
     parent folder/new_component
+
+## Using the components
+- here we place the components where we will want them to show up on the pages
+- here we arrange the main components first in the app.component html (recipes & shopping list)
+- then we arrange recipe-list & recipe detail next to each other in recipies.component.html using:
+  <div class="row">
+    <div class="col-md-5">
+      <app-recipe-list></app-recipe-list>
+    </div>
+    <div class="col-md-7">
+      <app-recipe-detail></app-recipe-detail>
+    </div>
+  </div>
+- then in recipe-list.component.html we display the app-recipe-item
+- in shopping-list.component.html we add the app-shopping-edit
+
     
