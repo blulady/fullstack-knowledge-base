@@ -66,3 +66,15 @@
 - we plug the logic into the html for displaying a list of recipes using
     -ngFor
     & property binding for the img
+    <a href="#" class="list-group-item clearfix"
+    *ngFor="let recipe of recipes">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+        <p class="list-group-item-text">{{ recipe.description }}</p>
+      </div>
+      <span class="pull-right">
+        <img [src]="recipe.imagePath"
+         alt="{{ recipe.name }}"
+         class="img-responsive"
+         style="max-height: 50px;">
+      </span>
