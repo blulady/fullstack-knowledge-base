@@ -48,4 +48,8 @@
 - then in recipe-list.component.html we display the app-recipe-item
 - in shopping-list.component.html we add the app-shopping-edit
 
+## Adding the Navigation bar
+- use html & bootstrap to create a navbar, which isn't working so great because npm doesn't seem to put bootstrap3 where we would normally expect to find it
+- copied folder from other project & pasted it into the right place (will check to see why it's not working later)
+
     
