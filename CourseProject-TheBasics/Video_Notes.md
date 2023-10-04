@@ -78,3 +78,6 @@
          class="img-responsive"
          style="max-height: 50px;">
       </span>
+
+## Displaying Recipe Details
+- create the html to display the recipe details 
