@@ -99,3 +99,8 @@
 - we define the type for the ingredient array ( & import it)
 - we create some ingredients 
 - we use ngFor to out put the ingredients & their amount
+
+## Adding a Shopping List Edit Section
+- we add the html formatting to edit the shopping list
+- we add two buttons the second of which does not submit the form, it will delete an ingredient
+- a third button to allow us to clear the form
