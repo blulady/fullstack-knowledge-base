@@ -81,3 +81,8 @@
 
 ## Displaying Recipe Details
 - create the html to display the recipe details 
+
+## Working on the Shopping List Component
+- we add an output of list with clicable items
+- enforce a curser that looks like a pointer (will later use this like a button & don't need the href)
+- then we go to the logic side (.ts file) and add ingriedents empty array (realize we need a model)
