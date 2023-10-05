@@ -10,6 +10,7 @@ import { ModelDataComponent } from './model-data/model-data.component';
 import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { SharedComponent } from './shared/shared.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     ModelDataComponent,
     RecipeListComponent,
     RecipeItemComponent,
+    SharedComponent,
   ],
   imports: [
     BrowserModule

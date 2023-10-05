@@ -86,3 +86,11 @@
 - we add an output of list with clicable items
 - enforce a curser that looks like a pointer (will later use this like a button & don't need the href)
 - then we go to the logic side (.ts file) and add ingriedents empty array (realize we need a model)
+
+## Creating an "ingredient" model
+- need to create a shared folder because both components will be using the indgriedent model
+- demos the shorthand for creating a class using
+  export class Ingredient {
+      constructor(public name: string, public amount: number) {
+      }
+  }
