@@ -94,3 +94,8 @@
       constructor(public name: string, public amount: number) {
       }
   }
+
+## Creating & Outputting the Shopping List
+- we define the type for the ingredient array ( & import it)
+- we create some ingredients 
+- we use ngFor to out put the ingredients & their amount
