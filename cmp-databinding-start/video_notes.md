@@ -22,3 +22,15 @@
 
 ## Assinging an Alias to Custom Properties
 - if you want to change the name of the property add a name as an argument @Input("srvElement")
+
+## Binding to Custom Events
+- if we want to inform our parent component of a change made in a child component (the component that impliments the first component) (that a new server/bluprint was created)
+- we copy functions back to app.component.ts & rename them
+  - we then modify the function to accept serverData as a parameter & then push the object to serverElements (same for blueprint) accessing the information from the parameter
+- we want to pass newServerName from the cockpit to the app component
+- we have to create new properties (serverCreated & blueprintCreated) & make sure these properties are events we can emit
+  - this makes it so we can emit the events
+    serverCreated = new EventEmitter<{serverName: string, serverContent: string}>() // we define the typd of event data to emit, add the () at the end to call the constructor object & create a new eventEmitter object, that is stored in server created
+  - then in the onAddServer()/onAddBlueprint(), we pass the object & emit it
+    this.blueprintCreated.emit({serverName: this.newServerName, serverContent: this.newServerContent});
+  - we have to add @Output() decorator to make it "listenable" from outside the component
