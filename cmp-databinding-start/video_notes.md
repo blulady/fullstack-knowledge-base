@@ -49,3 +49,12 @@
 - the selector changed _ng-content-followedbylongnumberseq unique to each component specific element type (ig all <p> in cockpit have same numb seq but <p> component in app.component have a different numb seq from cockpit)
 - the attributes are applied by angular (same attribute to all elements in a component), make sure that styles are only applied to elements in a specific comopnent
 - emulates the shadow dom (not supported by all browsers)
+
+## More on View Encapsulation
+- can override encapsulation
+- by going to the .ts file of the component & adding to the @component decorator
+  encapsulation: ViewEncapsulation
+   - there are 3 options
+        - Emulated = defualt, don't need to select this
+        - None = will get rid of the attributes you see in the dev tools & apply the css globally & will affect other components
+        - Shadow DOM: will give you the same result as before with emulated but only in browsers that support it
