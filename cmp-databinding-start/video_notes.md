@@ -43,3 +43,9 @@
 - @input makes your properties bindable from outside the component (from the parent component)
 - @output allows parent components ussing the component to listen to events inside the child
 - complicated to have two components at the same level talk to each other, info has to be passed to parent then back to other child - can be inpractical another way 
+
+## Understanding View Encapsulation
+- paragraphs are no longer colored blue because the html is now used in other components that don't have access to those css properties in app.component.css
+- the selector changed _ng-content-followedbylongnumberseq unique to each component specific element type (ig all <p> in cockpit have same numb seq but <p> component in app.component have a different numb seq from cockpit)
+- the attributes are applied by angular (same attribute to all elements in a component), make sure that styles are only applied to elements in a specific comopnent
+- emulates the shadow dom (not supported by all browsers)
