@@ -34,3 +34,7 @@
   - then in the onAddServer()/onAddBlueprint(), we pass the object & emit it
     this.blueprintCreated.emit({serverName: this.newServerName, serverContent: this.newServerContent});
   - we have to add @Output() decorator to make it "listenable" from outside the component
+
+## Assigning an Alias to Custom Events
+- can assign an alias between @Output() @Output('bpCreated')
+- use that alia when it's called in the app.component.html (bpCreated)="onBlueprintAdded($event)"
