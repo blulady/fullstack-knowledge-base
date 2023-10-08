@@ -38,3 +38,8 @@
 ## Assigning an Alias to Custom Events
 - can assign an alias between @Output() @Output('bpCreated')
 - use that alia when it's called in the app.component.html (bpCreated)="onBlueprintAdded($event)"
+
+## Custom Property & Event Binding Summary
+- @input makes your properties bindable from outside the component (from the parent component)
+- @output allows parent components ussing the component to listen to events inside the child
+- complicated to have two components at the same level talk to each other, info has to be passed to parent then back to other child - can be inpractical another way 
