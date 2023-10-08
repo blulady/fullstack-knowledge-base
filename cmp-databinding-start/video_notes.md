@@ -58,3 +58,13 @@
         - Emulated = defualt, don't need to select this
         - None = will get rid of the attributes you see in the dev tools & apply the css globally & will affect other components
         - Shadow DOM: will give you the same result as before with emulated but only in browsers that support it
+
+## Using Local References in Templates
+- can place a local refrence on any html element 
+  replace [(ngModel)]="newServerContent" with #serverNameInuput
+  & pass serverNameInput as an argument to (click)="onAddServer(serverNameInput)"
+
+- can use them everywhere in your template but NOT .ts file
+- can use them in functions to pass them to your ts file
+- the local reference gives us the element with all its properties
+- be explicit about the type (in the parameters for the ts function in .ts file ig: HTMLInputElement)
