@@ -68,3 +68,13 @@
 - can use them in functions to pass them to your ts file
 - the local reference gives us the element with all its properties
 - be explicit about the type (in the parameters for the ts function in .ts file ig: HTMLInputElement)
+
+## Getting Access to the Template & DOM with @ViewChild
+- a way to access any any element directly from the typescript code (direct access to elements)
+- sometimes you want access before calling a method
+- create a local reference in the cockpit.component.html #serverContentInput
+- then in cockpit.component.ts create a property with the ViewChild() decorator (& the local refrence as an argument) (import it from angular/core) (can also pass components not as a string(no quotes) but just CockpitComponent to get access to the first occurrence of the CockPitComponent)
+    @ViewChild('serverContentInput') serverContentInput;
+- can access the value in the functions by
+    serverContent: this.serverContentInput.nativeElement.value
+- don't change the element this way (use other tools)
