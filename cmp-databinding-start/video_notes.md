@@ -78,3 +78,40 @@
 - can access the value in the functions by
     serverContent: this.serverContentInput.nativeElement.value
 - don't change the element this way (use other tools)
+
+## Projecting Content into Components with ng-content
+- everything you place between the opening & closing tag of your own component is lost by default
+**unless you use a special directive**
+- put this in the place where you want to render the content add
+    <ng-content select="selector"></ng-content>
+    - serves as a hook you can place in your component to mark the place for angular where it should add any content it finds btwn the opening & closing tag here
+
+## Seeing lifecycle Hooks in Action
+- ngOnInit() is a lifecycle hook
+- once a new component is instatiated Angular goes through a couple of phases in this creation
+- we can hook into those phases & execute some code
+  - by implimenting some methods Angular will call if they are present
+- different phases
+  first: ngOnChanges called after a bound input property changes
+    - can be executed multiple times
+        1. at the start when a new component is created
+        2. always called when a bound input property changes (properties decorated with @input)
+  second: ngOnInit called once the component has been initialized (hasn't been added to the dom yet but 
+        1. angular finished basic initalization & properties can now be accessed/initalized)
+        2. can run after the constructor (if you want it to)
+  third: ngDoCheck will run when ever a change detection runs
+    - change detection is the system that Angular uses to determine if there was a change in the component/template
+        - to see if that part of the template needs to be re-rendered
+    - great methond if you want to do something on every change detection cycle
+  forth: ngAfterContentInit is called whenever content project by ng-conent has been initalized (the view of the parent component)
+      - executed whenever change detection checked this content we're projecting into our component
+  fifth: ngAfterViewInit called after the component's view (& child's views) has been initalizied
+    - is reached once the view of our own compoent has been finished initalizing/view has been rendered
+  sixth: ngAfterViewChecked is called whenever our view has been checked
+    - once either all changes were displayed in the view or no changes were detected by Angular
+  seventh: ngOnDestroy if you destroy a component or an ngIf gets set to false
+    - removes it from the DOM
+    - great place to do some clean up work bc it is called right before the object itself will be destroyed by angular
+
+
+
