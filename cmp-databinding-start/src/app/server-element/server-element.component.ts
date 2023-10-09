@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -7,12 +7,42 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ServerElementComponent {
   @Input('srvElement') element: {type: string, name:string, content:string};
+  @Input() name: string;
 
-  constructor() {}
 
-  ngOnInit() {
-
+  constructor() {
+    console.log('contructor called')
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("ngOnChanges called");
+    console.log(changes);
+  }
 
+  ngOnInit() {
+    console.log('ngOnInit called')
+  }
+
+  ngDoCheck() {
+    console.log('ngDoCheck called!')
+  }
+
+  ngAfterContentInit() {
+    console.log('ngAfterContentInit called!')
+  }
+
+  ngAfterContentChecked() {
+    console.log('ngAfterContentChecked called!')
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit called!')
+  }
+
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked called!')
+  }
+  ngOnDestroy() {
+    console.log('ngOnDestroy called!')
+  }
 }

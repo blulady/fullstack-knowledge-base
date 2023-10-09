@@ -113,5 +113,6 @@
     - removes it from the DOM
     - great place to do some clean up work bc it is called right before the object itself will be destroyed by angular
 
-
+## Seeing Lifecycle Hookes in Action
+- ngOnChanges could be super useful if you want to react to any changes & do something with the old values
 
