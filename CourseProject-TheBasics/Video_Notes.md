@@ -104,3 +104,31 @@
 - we add the html formatting to edit the shopping list
 - we add two buttons the second of which does not submit the form, it will delete an ingredient
 - a third button to allow us to clear the form
+
+## Adding Navigation with Event Binding & ngIf
+- load recipes or shoppping list determined by what was clicked in the header
+- start with the header component template add click & function
+        <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
+        <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+- then move to header component ts file & create onSelect function
+      - add a new property called featureSelected, that is a new event emitter & pass the string
+      - then we use the property as a value to emit an event whenever we click one of the buttons & emit feature (the string we passed in from the method call at the template)
+      - then enable thi event to be listened to from outside this component
+    
+    @Output() featureSelected = new EventEmitter<string>();
+
+    onSelect(feature: string) {
+      this.featureSelected.emit(feature);
+    }
+- then in app.component.html will have the parent app listening for the featureSelected event
+    <app-header (featureSelected)="onNavigate($event)">
+    - $event will always refer to the event data anywhere between the quotes in the function called by (click)
+- then in the app.component.ts file create onNavigate function & store the feature
+      loadedFeature = 'recipe';
+      onNavigate(feature: string) {
+        this.loadedFeature = feature;
+      }
+- We can now place an if statement to determin which of the two components should be displayed
+      <app-recipe-book *ngIf="loadedFeature === 'recipe'"></app-recipe-book>
+      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+
