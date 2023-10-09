@@ -127,5 +127,14 @@
 - you can access the content
 
 ## Getting Access to ng-content with @contentChild
-- 
+- add #contentParagraph local ref to app-component html <p> but will need to access it from server-element
+- won't be able to access @ViewChild because it's not part of the view, it's part of the content
+- why there are two different hooks for content & view
+- can use @ContentChild instead
+    @ContentChild('contentParagraph') paragraph: ElementRef;
+- can access in
+      ngAfterContentInit() {
+        console.log('ngAfterContentInit called!')
+        console.log('Text Content of paragraph: ' + this.paragraph.nativeElement.textContent);
+      }
 
