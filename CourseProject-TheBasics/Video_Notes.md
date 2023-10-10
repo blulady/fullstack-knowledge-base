@@ -132,3 +132,35 @@
       <app-recipe-book *ngIf="loadedFeature === 'recipe'"></app-recipe-book>
       <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
 
+## Passing Recipe Data with Property Binding
+- we cut the recipe-list.component.html and paste it into the recipe item (now that we know how to pass data btwen components)
+    
+    <a href="#" class="list-group-item clearfix">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+        <p class="list-group-item-text">{{ recipe.description }}</p>
+      </div>
+      <span class="pull-right">
+        <img [src]="recipe.imagePath"
+        alt="{{ recipe.name }}"
+        class="img-responsive"
+        style="max-height: 50px;">
+      </span>
+    </a>
+
+    - and then call the recipe item from recipe list
+        <app-recipe-item
+          *ngFor="let recipeElement of recipes"
+          [recipe]="recipeElement"></app-recipe-item>
+    - and then import the recipe model into the recipe-item component
+        export class RecipeItemComponent {
+            @Input() recipe: Recipe;
+
+            constructor() {}
+
+            ngOnInit() {
+
+            }
+          }
+
+          
