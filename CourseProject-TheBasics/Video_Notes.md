@@ -163,4 +163,35 @@
             }
           }
 
-          
+## Passing Data with Event & Property Binding
+- looking to click on a single recipe item & load it in the recipe details section recipe-item.component.html
+    <a href="#" class="list-group-item clearfix"
+    (click)="onSelected()">
+- emit an event on a single recipe item component recipe-item.component.ts emitevent
+    @Output() recipeSelected = new EventEmitter<void>();
+    onSelected() {
+      this.recipeSelected.emit();
+    }
+- & output this event to the recipe-list html component to pass down the event data (which recipe was selected)
+    (recipeSelected)="onRecipeSelected(recipeElement)"
+    <app-recipe-detail
+- we have to impliment the onRecipeSelected(recipeElement) in recipe-list.ts
+    @Output() recipeWasSelected = new EventEmitter<Recipe>()
+      onSelected() {
+        this.recipeSelected.emit();
+      }
+- then go to recipes.component.html to display the recipe selected
+    (recipeWasSelected)="selectedRecipe = $event"
+    *ngIf="selectedRecipe; else infoText"></app-recipe-detail>
+      <ng-template #infoText>
+        <p>Please select a Recipe</p>
+      </ng-template>
+
+- make sure that the property exists in the recipes.component.ts file
+    selectedRecipe: Recipe;
+    export class RecipeBookComponent {
+      selectedRecipe: Recipe;
+    }
+- now we pass this information to the recipe detail component & say a dummy text if a recipe hasn't been selected by creating a local refrence that we add to the else statment of the ngIf
+
+passing data with event and property binding (combined) 10:31
