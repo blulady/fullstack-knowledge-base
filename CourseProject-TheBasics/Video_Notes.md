@@ -194,4 +194,27 @@
     }
 - now we pass this information to the recipe detail component & say a dummy text if a recipe hasn't been selected by creating a local refrence that we add to the else statment of the ngIf
 
-passing data with event and property binding (combined) 10:31
+## Allowing the User to Add Ingredients to the Shopping List
+- in the form of shopping-edit.component.html add a nameInput local reference to the name input & add a local reference #amountInput to the amount input
+- then the idea is to use the local references (passing them as an argument or using @ViewChild) so when you click on the button you use the value of the inputs to create a new ingrident & add it to our array of ingridents
+- then take the refrences (name & amount) & create a function for the add button OnAddItem()
+- in shopping-edit.component.ts add the properties using @ViewChild
+- you will then create a eventemitter to send the new ingredient to the shopping-list.component.html (parent) with @Output()
+- in OnAddItem() stick the properties into a new ingredient & then call the event emitter
+- then in the parent component (shopping-list.component.html) we add our listener (ingredientAdded)="onIngredientAdded($event)
+- then in the parent component (shopping-list.component.ts) we define the function:
+    onIngredientAdded(ingredient: Ingredient) {
+      this.ingredients.push(ingredient);
+    }
+& add our ingredient to the list
+
+# Directives Deep Dive
+
+## Module Introduction
+- attribute directives: sit on elements just like attributes
+  - will never distroy an element on the dom, just properties
+- structural directives: also change the struture of the DOM around this element
+  - ngIf on a paragraph & if that condition is false this paragraph is removed from the DOM, overall view container affected
+  - affect a whole area in the DOM/all the DOM
+
+
