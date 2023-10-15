@@ -258,3 +258,7 @@
         & use renderer function setStyle on the elementReference.nativeElement to change a property (background-color)
 
 ## Using HostListener to Listen to Host Events
+
+
+# Changing Pages with Routing
+##
