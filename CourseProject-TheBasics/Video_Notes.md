@@ -217,4 +217,13 @@
   - ngIf on a paragraph & if that condition is false this paragraph is removed from the DOM, overall view container affected
   - affect a whole area in the DOM/all the DOM
 
+## ngFor & ngIf Recap
+- can't have more than one structural directive on one element
 
+## ngClass & ngStyle Recap
+- attribute directives
+- use ngClass to set a css class ig:
+      [ngClass]="{odd: odd % 2!==0}"
+- ngStyle asllows us to also pass an object to some property (the property) is alss named ngStyle) on the same directive
+- so we can use the attribute directives to add if statements to a property ig
+    [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'black': 'transparent'}"
