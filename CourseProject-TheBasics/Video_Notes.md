@@ -227,3 +227,34 @@
 - ngStyle asllows us to also pass an object to some property (the property) is alss named ngStyle) on the same directive
 - so we can use the attribute directives to add if statements to a property ig
     [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'black': 'transparent'}"
+
+## Creating a Basic Attribute Directive
+- create a folder in app for the directive & then create a directive.ts file for the directive ig:
+  basic-highlight
+    basic-highlight.directive.ts
+- create a directive by using the @Directive decorator & creating a BasicHighLightDirective class
+- configure the directive by adding a selector,
+    - without brackets around the selector would select it by element (needs to be unique)
+      -if you want it attribute style wrap the 'appBasicHighlight' in brackets '[appBasicHighlight]'
+        this will make it recognised without the square brakets when added to an element
+- we can inject the element the directive sits on into this directive
+    - inject by adding the constructor (which every TypeScript class has)
+    - need specific argument: a reference to the element the directive was placed on (ElementRef)
+        - to use the data in our class add private (making it a property of this class & automatically assign this value)
+        - then we can access the element by using nativeElement
+        ^ best to do the above in the OnInit function
+- inform angular we have a new directive by
+    - going to app.module.ts 
+      - adding BasicHighLightDirective under declarations
+
+## Using Renderer to build a Better Attribute Directive
+- better because can get an error when directly accessing the DOM (basic example) instead of using the renderer
+- ng generate directive // ng g d
+- create a folder for it (will need to adjust path if you do this)
+  - in the file you created for the directive 
+      created a renderer with renderer2 in the constructor
+        & inject the elementRefrence (in the arguments in the constructor)
+      call it in the ngOnInit
+        & use renderer function setStyle on the elementReference.nativeElement to change a property (background-color)
+
+## Using HostListener to Listen to Host Events
