@@ -332,5 +332,21 @@ actual way to do this
         this.router.navigate(['/servers']);
       }
 
+## Using Relative Paths in Programmatic Navigation
+- create a button in servers.html 
+    <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
+- create a function in servers.ts
+  - inject a router into the constructor
+    constructor(private serversService: ServersService, private router: Router) { }
+    onReload() {
+      this.router.navigate(['/servers']);
+    }
+    - this works (vs the routerLink) because it doesn't know what component you are on
 
+    we can pass router.navigate another argument to tell it where were are
+      - inject a route into the constructor private route: ActivatedRoute
+      this.router.navigate(['servers'], {relativeTo: this.route});
 
+- Activated route injects the currently active routes (the route which loaded this component)
+
+- and now the button is broken lol
