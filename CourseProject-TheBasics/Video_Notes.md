@@ -350,3 +350,8 @@ actual way to do this
 - Activated route injects the currently active routes (the route which loaded this component)
 
 - and now the button is broken lol
+
+## Passing Parameters to Routes
+- to be able to access individual users dynamically
+  { path: 'users/:id', component: UserComponent }
+  - retreve id from path, anthing after the slash & colon would be interpreted as the id
