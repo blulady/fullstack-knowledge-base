@@ -295,7 +295,7 @@ actual way to do this
 - in app.component.html
   <a routerLink="/">Home</a>
   <a routerLink="/servers">
-  <a [routerLink]="['/users']">
+  <a [routerLink]="['/users']"> 
 
 ## Understanding Navigation Paths
 - needs slash infront of path name
@@ -355,3 +355,12 @@ actual way to do this
 - to be able to access individual users dynamically
   { path: 'users/:id', component: UserComponent }
   - retreve id from path, anthing after the slash & colon would be interpreted as the id
+
+## Fetching Route Parameters
+- we inject the private route into the user.component.ts constructor & we get the currently loaded route 
+      - it will give us access to the id passed in the url (selected user)
+      - we retrieve the user from the url in ngOnInit() by using the snapshot.params property on the router object
+            id: this.route.snapshot.params['id']
+            name: this.route.snapshot.params['name']
+      - then in user.component.html
+        {{ user.id }} {{ user.name }}
