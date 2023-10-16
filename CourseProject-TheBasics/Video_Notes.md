@@ -377,3 +377,25 @@ actual way to do this
       - fired whenever new data is sent through whenever the params change 
           (params: Params) => {this.user.id = params['id']} // update our user objects id
        
+## An Important Note about Route Observables
+- angular cleans up the subscription you set up here whenever this component is destroyed
+  - the component gets destroyed but the subscription we created isn't (not coupled closely together)
+- might want to implement ngOnDestroy but in order to destroy a thing, you have to make it so
+    - we import Subscription
+    - create paramsSubscription: Subscription;
+    - then attach the property to a value
+        this.paramsSubscription = this.route.params
+          .subscribe(
+            (params: Params) => {
+              this.user.id = params['id'];
+              this.user.name = params['name'];
+            }
+    - then destroy it with OnDestroy (implement like onInit)
+        export class UserComponent implements OnInit, OnDestroy {
+        
+        ngOnDestroy(): void {
+          this.paramsSubscription.unsubscribe();
+      }
+        
+
+        
