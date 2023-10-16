@@ -261,4 +261,18 @@
 
 
 # Changing Pages with Routing
-##
+
+## Module Introduction
+- Angular ships with it's own router which allows you to change the URL in the Url bar & still only use one page bu exchange major parts/lots of parts of that page so it looks like a new page
+- just JS changing a lot of parts in your DOM
+
+## Why do we need a Router?
+- to be able to display routes the front end application has
+
+## Setting up & Loading Routes
+- looking to display one component at a time
+- register routes in the app.module.ts
+    import { Routes } from "@angular/router";
+    const appRoutes: Routes = [
+      { path: 'users', component: UsersComponent }
+    ];
