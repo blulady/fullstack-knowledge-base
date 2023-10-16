@@ -364,3 +364,16 @@ actual way to do this
             name: this.route.snapshot.params['name']
       - then in user.component.html
         {{ user.id }} {{ user.name }}
+
+## Fetching Route Parameters Reactively
+- can hard code a url   
+    <a [routerLink]="['/users', 10, 'Anna']">Load Anna</a>
+    - since the link is on the user component, the URL still changes but because we are on the component, angular doesn't reinstantiate it
+- for subsequent changes we need a different approach
+
+- params.suscribe is an observable (a feature added by a 3rd party package) to work with asynchrous tasks
+  - an easy way to subscribe to an event which might happen in the future & execute when it happens
+  - recieves 3 arguments (3 functions)
+      - fired whenever new data is sent through whenever the params change 
+          (params: Params) => {this.user.id = params['id']} // update our user objects id
+       
