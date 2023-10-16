@@ -296,3 +296,33 @@ actual way to do this
   <a routerLink="/">Home</a>
   <a routerLink="/servers">
   <a [routerLink]="['/users']">
+
+## Understanding Navigation Paths
+- needs slash infront of path name
+  <a routerLink="/servers">Reload Page</a>
+      ^ the above is an absolute path
+      vs a realtive path without the slash
+- a relative path angular always apends the path you specify in the routerLink to the end of your current path
+    - current path depends on what component you are currently on
+- the root component is not routed through the router, it always sits at localhost:4200/
+- using relative paths inside of active components is only good for nested routes
+<a routerLink="../servers">
+    this will work because ~~it goes back one level (in the directory)~~ it removes the currently loaded segment (so deletes it & reloads /servers again)
+- absolute path "/servers"
+- relative paths: "servers" or "./servers" add to the current path
+- ../ or more than once to say go back ones path & always seen from the currently loaded component
+
+## Styling Active Router Links
+- angular gives us the routerLink active directive to style router links
+- you can add it to a wrapping element
+    <li role="presentation" routerLinkActive=""><a routerLink="/">Home</a></li>
+- or to the link itself
+    <li role="presentation"><a routerLink="/" routerLinkActive="">Home</a></li>
+- attach the class you wish to specify between the quotes like routerLinkActive="active"
+- home link is always active because the path is included for all paths
+    we fix this by <li role="presentation" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">
+        - we use property pinding because we arent just passing a string but a JS object ({exact: true}) so we use []
+        - exact is a reserved property on this object you passed to routerLinkActive & tells angular only add this routerLinkActive css class if the exact full pass is used (so not / plus but just /)
+
+## 
+
