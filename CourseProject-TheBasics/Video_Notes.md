@@ -324,5 +324,13 @@ actual way to do this
         - we use property pinding because we arent just passing a string but a JS object ({exact: true}) so we use []
         - exact is a reserved property on this object you passed to routerLinkActive & tells angular only add this routerLinkActive css class if the exact full pass is used (so not / plus but just /)
 
-## 
+## Navigating Programmatically
+- might want to use if finished some opperation or we want to trigger the navigation for some reason
+- we can use a function to route our page somewhere by
+    (click)="onLoadServers()" in home.component.html
+    - and onLoadServers() {
+        this.router.navigate(['/servers']);
+      }
+
+
 
