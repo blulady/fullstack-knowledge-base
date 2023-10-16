@@ -272,7 +272,27 @@
 ## Setting up & Loading Routes
 - looking to display one component at a time
 - register routes in the app.module.ts
-    import { Routes } from "@angular/router";
+    import { Routes, RouterModule } from "@angular/router";
     const appRoutes: Routes = [
       { path: 'users', component: UsersComponent }
     ];
+
+    - in the imports array add
+        RouterModule.forRoot(appRoutes)
+
+- in app.component.html
+    <router-outlet></router-outlet> -special directive that marks the place in the document where we want the angular router to load the component of the currently selected route.
+
+## Navigating with Router Links
+can but not optimal
+- in app.component.html
+  add paths to the hrefs
+    <a href="/">Home</a>
+    <a href="/servers">
+    <a href="/users">
+actual way to do this
+- doesn't restart the app, keeps the app state & faster than reloading
+- in app.component.html
+  <a routerLink="/">Home</a>
+  <a routerLink="/servers">
+  <a [routerLink]="['/users']">
