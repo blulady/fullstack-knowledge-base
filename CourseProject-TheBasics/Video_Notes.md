@@ -397,5 +397,17 @@ actual way to do this
           this.paramsSubscription.unsubscribe();
       }
         
+## Passing Query Parameters & Fragments
+- how to pass info using the routerLink directive & the navigate method
+- first we add another path to the routers array in apt.module.ts 
+    { path: 'servers/:id/edit', component: ServerComponent },
+- then to be able to load this route on my servers component in the servers html add
+    [routerLink]="['/servers', 5, 'edit']"
+- we can add queryParams which is just another bindable property of the routerLink directive & add key/value pairs of the aprameters you want to edit >> localhost:46191/servers/5/edit?allowedit=1
+- add a fragment: fragment="loading" >>/edit?allowedit=1#loading
+  onLoadServer(id: number) {
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment:'loading'});
+    } >> http://localhost:46191/servers/1/edit?allowEdit=1#loading
 
-        
+    
+
