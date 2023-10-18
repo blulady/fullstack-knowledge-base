@@ -410,4 +410,17 @@ actual way to do this
     } >> http://localhost:46191/servers/1/edit?allowEdit=1#loading
 
     
+## Retrieving Query Parameters & Fragments
+- we need to inject our activated route into the EditServerComponent Class in edit-server.ts
+  `constructor(private serversService: ServersService,
+    private route: ActivatedRoute) { }`
+- can see query params & fragment by consoling Actually cannot
+    console.log(this.route.snapshot.queryParams)
+    console.log(this.route.snapshot.fragment)
+
+- subscribing will allow you to react to changed query parameters
+    this.route.queryParams.subscribe();
+    this.route.fragment.subscribe();
+
+## Practicing & Some Common Gotchas?
 
