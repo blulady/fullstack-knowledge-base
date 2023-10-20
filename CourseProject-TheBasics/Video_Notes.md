@@ -414,7 +414,8 @@ actual way to do this
 - we need to inject our activated route into the EditServerComponent Class in edit-server.ts
   `constructor(private serversService: ServersService,
     private route: ActivatedRoute) { }`
-- can see query params & fragment by consoling Actually cannot
+- can see query params & fragment by consoling 
+  <!-- -// Actually cannot -->
     console.log(this.route.snapshot.queryParams)
     console.log(this.route.snapshot.fragment)
 
@@ -424,3 +425,18 @@ actual way to do this
 
 ## Practicing & Some Common Gotchas?
 
+- here we add [routerLink]="['/users', user.id, user.name]" to users.html
+(route has alread been created in the app.module.ts
+ {path:'users/:id/:name'})
+- here we change the [routerLink]="['/servers', server.id, 'edit']" in servers.html
+  need to create the route in app.module.ts
+    { path: 'servers/:id', component: ServerComponent },
+
+- getting data that we are passing in the route path from server.ts to the server.html 
+  1. inject the ActivatedRoute into the server.ts constructor
+  `constructor(private serversService: ServersService, private route: ActivatedRoute) { }`
+
+  2. then in ngOnInit get your ide from this activated route
+  `const id = this.route.snapshot.params['id']; this.server = this.serversService.getServer(id);`
+  
+  3. subscribe to params observable to get any changes
