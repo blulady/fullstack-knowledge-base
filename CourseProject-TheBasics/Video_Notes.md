@@ -258,7 +258,15 @@
         & use renderer function setStyle on the elementReference.nativeElement to change a property (background-color)
 
 ## Using HostListener to Listen to Host Events
+# Using Services & Dependency Injection
 
+## Why would you need services?
+- to simplify the app
+
+## Creating a Logging Service
+- choose a place (depending on what it does & what it needs access to)
+- naming convention name.service.ts
+- export a class (just a normal typescript class)
 
 # Changing Pages with Routing
 
@@ -431,12 +439,4 @@ actual way to do this
 - here we change the [routerLink]="['/servers', server.id, 'edit']" in servers.html
   need to create the route in app.module.ts
     { path: 'servers/:id', component: ServerComponent },
-
-- getting data that we are passing in the route path from server.ts to the server.html 
-  1. inject the ActivatedRoute into the server.ts constructor
-  `constructor(private serversService: ServersService, private route: ActivatedRoute) { }`
-
-  2. then in ngOnInit get your ide from this activated route
-  `const id = this.route.snapshot.params['id']; this.server = this.serversService.getServer(id);`
-  
-  3. subscribe to params observable to get any changes
+    
