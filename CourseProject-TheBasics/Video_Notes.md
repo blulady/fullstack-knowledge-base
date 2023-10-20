@@ -267,6 +267,9 @@
 - choose a place (depending on what it does & what it needs access to)
 - naming convention name.service.ts
 - export a class (just a normal typescript class)
+    `export class LoggingService {logStatusChange(status: string) {console.log('A server status changed, new status: ' + status);}}`
+
+
 
 # Changing Pages with Routing
 
