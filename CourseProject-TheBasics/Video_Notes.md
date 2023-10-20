@@ -282,6 +282,10 @@
     `providers: [LoggingService]`
     `constructor(private loggingService: LoggingService) {}`
     gives the class access to the service upon
+    `this.loggingService.logStatusChange(accountStatus);`
+    this calls the service
+
+- better than manual because 'it stays in the angular ecosystem'
 
 
 # Changing Pages with Routing
