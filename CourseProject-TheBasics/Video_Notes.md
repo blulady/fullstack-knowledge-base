@@ -269,6 +269,19 @@
 - export a class (just a normal typescript class)
     `export class LoggingService {logStatusChange(status: string) {console.log('A server status changed, new status: ' + status);}}`
 
+- you can do this but this is not how you use a service in angular DONT CREATE MANUALLY
+  ig: import into new-account
+    import { LoggingService } from '../logging.service';
+    const service = new LoggingService();
+    service.logStatusChange(accountStatus);
+
+## Hierarchical Injector
+- dependecy injector: code our class will depend on 
+    - using a hierarchical injector
+    `import { LoggingService } from '../logging.service';`
+    `providers: [LoggingService]`
+    `constructor(private loggingService: LoggingService) {}`
+    gives the class access to the service upon
 
 
 # Changing Pages with Routing
