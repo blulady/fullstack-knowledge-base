@@ -289,7 +289,8 @@
 
 - better than manual because 'it stays in the angular ecosystem'
 
-## Creating a Data Service
+## Creating a Data Service *bad example (see next note)
+- to keep it from overwriting in the child components we remove it from the providers array when we are injecting the service
 - to store & manage data
 - in the root app 
   account.service.ts
@@ -319,6 +320,11 @@
 - The next level below AppModule would be the AppComponent, if we provide the service here all of the children will have the same instance
 - The lowest level is a single component with no child components. Instance of this service will only be available for this component. It would overwrite if we provided the same service on a higher level
 
+## How Many Instances of Service Should It be?
+- depends on if you want to have the same instance or not
+- in the bad example we have 3 different instances & the child instances overwrite the instance we get from the app.component
+- to keep it from overwriting in the child components we remove it from the providers array
+- why does adding it to the providers create a new instance?
 
 # Changing Pages with Routing
 
