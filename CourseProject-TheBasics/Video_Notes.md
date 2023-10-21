@@ -258,6 +258,7 @@
         & use renderer function setStyle on the elementReference.nativeElement to change a property (background-color)
 
 ## Using HostListener to Listen to Host Events
+
 # Using Services & Dependency Injection
 
 ## Why would you need services?
@@ -483,4 +484,17 @@ actual way to do this
 - here we change the [routerLink]="['/servers', server.id, 'edit']" in servers.html
   need to create the route in app.module.ts
     { path: 'servers/:id', component: ServerComponent },
-    
+
+- getting data that we are passing in the route path from server.ts to the server.html 
+  1. inject the ActivatedRoute into the server.ts constructor
+  `constructor(private serversService: ServersService, private route: ActivatedRoute) { }`
+
+  2. then in ngOnInit get your ide from this activated route
+  `const id = +this.route.snapshot.params['id']; this.server = this.serversService.getServer(id);` 
+      - this gotcha is not converting id to a number us + at beging to convert to a number
+  
+  3. subscribe to params observable to get any changes
+  `this.route.params.subscribe((params: Params) => {this.server = this.serversService.getServer(params['id']))`
+
+
+  ** will throw error because we are calling the server component on the servers component even if we don't have an id available comment out <!-- <app-server></app-server> --> in servers html
