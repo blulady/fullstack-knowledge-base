@@ -351,6 +351,19 @@
 - here we emit an event in account.component.ts & listen for it in new-account.component.ts
 - aka cross-component communication through a service with the event emitter 
 
+## services in Angular 6+
+- can provide application-wide services in a different way. 
+- Instead of adding a service class to the providers[] array in AppModule , you can set the following config in @Injectable()
+  `@Injectable({providedIn: 'root'})`
+  `export class MyService {`
+  same as
+  `export class MyService { ... }`
+  & in app.module.ts
+  `import { MyService } from './path/to/my.service';`
+  `providers: [MyService]`
+- Services can be loaded lazily This can lead to a better performance and loading speed
+
+
 # Changing Pages with Routing
 
 ## Module Introduction
