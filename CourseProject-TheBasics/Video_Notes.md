@@ -313,6 +313,13 @@
 - in account-component.ts we inject accountsService to update status through the onSetTo function
     `onSetTo(status: string) {this.accountsService.updateStatus(this.id, status);`
 
+## Understanding the Hierarchical Injector
+- The angular dependecy injector is a hierarchical injector if we provide a service, angular will provide an instance of that service for this component & all of it's child components & the child's childs components. It will be the same instance of the service. 
+- The highest level is at the AppModule & the same instance of the service is available application wide.
+- The next level below AppModule would be the AppComponent, if we provide the service here all of the children will have the same instance
+- The lowest level is a single component with no child components. Instance of this service will only be available for this component. It would overwrite if we provided the same service on a higher level
+
+
 # Changing Pages with Routing
 
 ## Module Introduction
