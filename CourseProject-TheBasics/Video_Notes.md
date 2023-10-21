@@ -275,7 +275,8 @@
     const service = new LoggingService();
     service.logStatusChange(accountStatus);
 
-## Hierarchical Injector
+## Injecting the Logging Service into Components
+- Hierarchical Injector
 - dependecy injector: code our class will depend on 
     - using a hierarchical injector
     `import { LoggingService } from '../logging.service';`
@@ -287,6 +288,29 @@
 
 - better than manual because 'it stays in the angular ecosystem'
 
+## Creating a Data Service
+- to store & manage data
+- in the root app 
+  account.service.ts
+    `export class AccountsService {accounts = [{name: 'Master Account',status: 'active'}, {name: 'Testaccount', status: 'inactive'},{name: 'Hidden Account',status: 'unknown'}]; addAccount(name: string, status: string) {this.accounts.push({name: name, status: status});} updateStatus(id: number, status: string) {this.accounts[id].status = status;}}`
+- in app.component.ts we inject the service & initalize an accounts array (can call them in the html from this file)
+
+    export class AppComponent implements OnInit {
+      accounts: {name:string, status: string} [] = [];
+
+      constructor(private accountsService: AccountsService) {
+      }
+
+      ngOnInit() {
+        this.accounts = this.accountsService.accounts;
+      }
+    }
+- in new-account.component.ts we inject the accountsService
+  `export class NewAccountComponent {constructor(private loggingService: LoggingService, private accountsService: AccountsService) {}`
+  - we call the addAccount function in onCreateAccount
+    `onCreateAccount(accountName: string, accountStatus: string) {this.accountsService.addAccount(accountName, accountStatus);`
+- in account-component.ts we inject accountsService to update status through the onSetTo function
+    `onSetTo(status: string) {this.accountsService.updateStatus(this.id, status);`
 
 # Changing Pages with Routing
 
