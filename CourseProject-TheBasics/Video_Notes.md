@@ -326,6 +326,22 @@
 - to keep it from overwriting in the child components we remove it from the providers array
 - why does adding it to the providers create a new instance?
 
+## Injecting Services into Services
+- moving service to app.module.ts
+- to mv to app.module.ts pull the service from the providers in the app.component.ts 
+    - & add it to the providers array in app.module.ts
+    - this guarantees that the whole app recieves the same instance of the service
+- inject a service into another service
+  - to inject logging into accountsService we clear the calls to loggin in the child componennts (account & newAccount)
+  - then inject the logging service into the account service in the constructor ( & import it)
+  - the service needs metadata attached to it => use @Injectable on the class you are looking to inject into (accounting)
+        `@Injectable()`
+        `export class AccountsService {`
+        * don't forget the import `import { Injectable } from '@angular/core';`
+- in newer versions of angular it is recommended that you always add @Inectable
+
+## Using Services for Cross-Component Communication
+
 # Changing Pages with Routing
 
 ## Module Introduction
