@@ -341,6 +341,15 @@
 - in newer versions of angular it is recommended that you always add @Inectable
 
 ## Using Services for Cross-Component Communication
+- provide some event which we can trigger one component & listen to in aother
+- in accounts.service.ts
+    `statusUpdated = new EventEmitter<string>();`
+- in account.component.ts
+    `onSetTo(status: string) {this.accountsService.statusUpdated.emit(status);`
+- in new-account.components.ts
+    `{this.accountsService.statusUpdated.subscribe((status: string) => alert('New Status: ' + status));}`
+- here we emit an event in account.component.ts & listen for it in new-account.component.ts
+- aka cross-component communication through a service with the event emitter 
 
 # Changing Pages with Routing
 
