@@ -561,11 +561,12 @@ actual way to do this
     - checks for validity 
     - conditionally change the way the form is displayed (red borders around invalid controls)
 
-    ## Angular & Forms
+## Angular & Forms
     - angular gives you a JS object representation of your form
       makes it easier to 
         - retrieve user valuse & sto see the stat of the form & work with it
-    ## Template Driven (TD) vs Reactive approach
+
+## Template Driven (TD) vs Reactive approach
     - angular offers two approaches
     - Template: put the form in the template in HTmL & angular will infer the structure of your form 
         - what forms
@@ -574,3 +575,22 @@ actual way to do this
     - Reactive approach you define the structure of the form in TS, & HTML & you manually connect the two
         - complex
         - greater control
+
+## An Example Form
+- There is no action on the <form> tag pointing to a route, not specicying the method attribute which would be post, this form should not get submitted to a server, angular handles it
+
+## TD Creating the Form & Registering the Controls
+- to register the form
+    - in app.module.ts
+      `import { FormsModule } from '@angular/forms';`
+    - add it to your imports array
+    imports: [
+      BrowserModule,
+      FormsModule,
+    ]
+- Angular will automatically create a form for you ( a JS represenation of the form) when it detects a form element in HTML code
+-form element serving as a selector for "some Angular directive" to create that JS representation of the form
+- Angular will not automatically detect inputs in this form 
+- to tell angular to use an input add ngModel & name=""to the end of the tag
+    - ngModel is a directive made availabel in the forms module
+- select is another type of HTML input so you can add ngModel & name to the end there
