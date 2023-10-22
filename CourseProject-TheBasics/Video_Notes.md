@@ -549,3 +549,28 @@ actual way to do this
 
 
   ** will throw error because we are calling the server component on the servers component even if we don't have an id available comment out <!-- <app-server></app-server> --> in servers html
+
+
+  # Handling Forms in Angular Apps
+
+  ## Module Introduction
+  - because it is a single page application you don't submit the form to the server but handle it through angular
+  - to submit something to the server you need to reach out via Angular's HTTP service to that server
+  Angular will let you 
+    - allow you to get the values a user entered
+    - checks for validity 
+    - conditionally change the way the form is displayed (red borders around invalid controls)
+
+    ## Angular & Forms
+    - angular gives you a JS object representation of your form
+      makes it easier to 
+        - retrieve user valuse & sto see the stat of the form & work with it
+    ## Template Driven (TD) vs Reactive approach
+    - angular offers two approaches
+    - Template: put the form in the template in HTmL & angular will infer the structure of your form 
+        - what forms
+        - what inputs
+        - easy to get started
+    - Reactive approach you define the structure of the form in TS, & HTML & you manually connect the two
+        - complex
+        - greater control
