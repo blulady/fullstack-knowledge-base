@@ -594,3 +594,16 @@ actual way to do this
 - to tell angular to use an input add ngModel & name=""to the end of the tag
     - ngModel is a directive made availabel in the forms module
 - select is another type of HTML input so you can add ngModel & name to the end there
+
+## TD: Submitting & Using the Form
+- Make the form submitable by 
+    - adding an onSubmit function to the ts file
+    - calling that function from the html
+      by adding ngSubmit directive a JS event is made available whenever the form is submitted
+      `<form (ngSubmit)="onSubmit()">`
+    - can add a local reference to HTML elements & set it equal to ngForm to gain access to form attributes
+      `<form (ngSubmit)="onSubmit()" #f="ngForm">`
+    - can pass f as an argument to the onSubmit method & print it
+      `import { NgForm } from '@angular/forms';`
+      `<form (ngSubmit)="onSubmit(f)" #f="ngForm">`
+      `onSubmit(form: NgForm) {console.log(form);}`
