@@ -611,3 +611,17 @@ actual way to do this
 ## TD: Understanding Form State
 - dirty = changed the field
 - touched = clicked the field
+
+## TD: Accessing the Form with @ViewChild
+- @ViewChild allows us to access a local ref
+- in .ts
+  `export class AppComponent {}`
+    `@ViewChild`
+  & then to gain access to the element which has the local reference f on it:
+    html: 
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+    ts:
+    `@ViewChild('f') signupForm: NgForm;`
+    `onSubmit() { console.log(this.signupForm);}`
+
+    
