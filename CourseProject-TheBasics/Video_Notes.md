@@ -607,3 +607,7 @@ actual way to do this
       `import { NgForm } from '@angular/forms';`
       `<form (ngSubmit)="onSubmit(f)" #f="ngForm">`
       `onSubmit(form: NgForm) {console.log(form);}`
+
+## TD: Understanding Form State
+- dirty = changed the field
+- touched = clicked the field
