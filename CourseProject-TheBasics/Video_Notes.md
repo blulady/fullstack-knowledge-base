@@ -626,11 +626,21 @@ actual way to do this
     `onSubmit() { console.log(this.signupForm);}`
 
 ## TD: Adding Validation to check User Input
-- Always validate inputon the server 
+- Always validate in put on the server 
 - validate input at the frontend to enhance user experience
 - to validate that none of the fields are empty & there is a valid e-mail address
 - in template driven approach, can only add validators to template
 - add `required` to the input (required is a default HTML attribute) Angular will detect it so it acts a selecter for a built-in directive & automatically configure the form to treat it as invalid if there is no input 
     <input type="text" id="username" class="form-control" ngModel name="username" required>
-- add `email` to varify email fields
+- add `email` to varify email fields (its a directive )
     <input type="text" id="username" class="form-control" ngModel name="username" required email>
+- you can check the forms validity in console under valid.
+- ng in front of a class indicatest that it is added by angular
+- in this case the classes are added dynamically
+
+## Built-in Validators & Using HTML5 Validation
+- https://angular.io/api/forms/Validators  all built-in validators
+- for template-driven approach, you need the directives
+- search the directives here https://angular.io/api?type=directive by using the term validator in the search field
+- Angular disables HTML% validation can enable by adding the ngNativeValidate to a control in your template. 
+
