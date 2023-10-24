@@ -575,6 +575,7 @@ actual way to do this
     - Reactive approach you define the structure of the form in TS, & HTML & you manually connect the two
         - complex
         - greater control
+# Starting with template
 
 ## An Example Form
 - There is no action on the <form> tag pointing to a route, not specicying the method attribute which would be post, this form should not get submitted to a server, angular handles it
@@ -624,4 +625,12 @@ actual way to do this
     `@ViewChild('f') signupForm: NgForm;`
     `onSubmit() { console.log(this.signupForm);}`
 
-    
+## TD: Adding Validation to check User Input
+- Always validate inputon the server 
+- validate input at the frontend to enhance user experience
+- to validate that none of the fields are empty & there is a valid e-mail address
+- in template driven approach, can only add validators to template
+- add `required` to the input (required is a default HTML attribute) Angular will detect it so it acts a selecter for a built-in directive & automatically configure the form to treat it as invalid if there is no input 
+    <input type="text" id="username" class="form-control" ngModel name="username" required>
+- add `email` to varify email fields
+    <input type="text" id="username" class="form-control" ngModel name="username" required email>
