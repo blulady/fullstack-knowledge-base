@@ -652,6 +652,11 @@ actual way to do this
 - to bind the disabled property (which will set the disable state of the button depending on a condition, the condition in this case)
     <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
 
-## 
-
-
+## TD: Outputting Validation Error Messages
+- use Bootstrap class for appropriate styling
+    <input type="email" id="email" class="form-control" ngModel name="email" required email> <span class="help-block">Enter valid email</span>
+- to gain access to the control created by Angular automatically by adding a local reference `#email="ngModel"`to the input element (since we added ngModel to the input) 
+    <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
+- the ngModel directive exposes info about the control it creates for us that we can access with the local reference `#email` so we can check if it is valid
+    <span class="help-block" *ngIf="!email.valid && email.touched">
+    
