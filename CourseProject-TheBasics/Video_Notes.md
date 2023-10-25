@@ -644,3 +644,14 @@ actual way to do this
 - search the directives here https://angular.io/api?type=directive by using the term validator in the search field
 - Angular disables HTML% validation can enable by adding the ngNativeValidate to a control in your template. 
 
+## TD: Using the Form State
+- angular tracks the state of each control of the form & conditionally adds ng CSS classes
+- we can use the css classes to add a red border to invlaid input fields in the .css file
+    `input.ng-invalid.ng-touched {border: 1px solid red;}`
+- we have access to the form through the f local refrence `#f="ngForm"`
+- to bind the disabled property (which will set the disable state of the button depending on a condition, the condition in this case)
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+
+## 
+
+
