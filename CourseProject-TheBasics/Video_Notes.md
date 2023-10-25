@@ -659,4 +659,17 @@ actual way to do this
     <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
 - the ngModel directive exposes info about the control it creates for us that we can access with the local reference `#email` so we can check if it is valid
     <span class="help-block" *ngIf="!email.valid && email.touched">
-    
+
+## TD: Set Default Values with ngModel Property Binding
+- to set defualt values use property binding
+- to bind it to a value we add brackets
+    <div class="form-group">
+<label for="secret">Secret Questions</label>
+<select id="secret"
+  class="form-control"
+  [ngModel]="defaultQuestion"
+  name="secret">
+
+- can hard code a value or set up a property in the .ts file to put bwtn quotes
+    - in the ts file `defaultQuestion = 'pet';`
+    because in the html file we have <option value="pet">Your first Pet?</option>
