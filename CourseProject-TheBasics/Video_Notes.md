@@ -730,5 +730,18 @@ actual way to do this
         `declarations: [AppComponent, ShortenPipe,],`
 - now we can add the pipe in html
 
+## Parameterizing a Custom Pipe
+- we add a limit value to our ShortenPipe
+    export class ShortenPipe implements PipeTransform {
+    transform(value: any, limit: number) {
+          if (value.length > limit) {
+            return value.substr(0, limit) + '...';
+          }
+          return value;
+        }
+      }
+- call it in html by 
+      <strong>{{ server.name | shorten:5}}</strong>
+
 
 
