@@ -705,4 +705,12 @@ actual way to do this
 - does not change property value, instance types
 - `{{ server.instanceType | uppercase }}` changes output to uppercase
 - `{{ server.started | date }}` changes format of dates
-- 
+
+## Parametrizing Pipes
+- to configure a pipe you pass a parameter to it by adding a colon
+- for the date pipe `date:'fullDate'`
+- for mulitple parameters add another colon `date:'fullDate':` *date doesn't take a second parameter
+
+## Where to learn more about Pipes
+- angular.io/api & then search for pipe
+
