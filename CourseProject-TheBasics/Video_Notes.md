@@ -782,4 +782,18 @@ actual way to do this
 - to make it so we need to enter a value before it will filter add
     `|| filterString == '')` so that it will return the original value
   `if (value.length === 0 || filterString == '') {return value;}`
-  
+
+## Pure & Impure Pipes (or:How to "fix" the Filter Pipe)
+- we add functionality to enable users to add a server
+  - in html
+  `<button class="btn btn-primary" (click)="onAddServer()">Add Server</button>`
+  - in ts add
+    `  onAddServer() {this.servers.push({instanceType: 'small', name: 'New Server',status: 'stable', started: new Date(15,1,2017)});}`
+- but we won't see this new server added to our filtered data when we use the filter because angular is not rerunning our pipe on the data whenever the data changes but changing/adding the input of the pipe will trigger a recalculation (will reapply the pipe to the data again) but updating the data (Arrays or Objects) doesn't trigger it
+- if you want to enforce it being updated even if you are in filter mode by adding a second property to the pipe `pure: false`
+
+    `@Pipe({`
+      `name: 'filterPipe'`
+      `pure: false`
+
+- the above change will make sure that whenever we change data on the page the pipe will be reacalculated 
