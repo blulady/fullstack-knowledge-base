@@ -699,3 +699,10 @@ actual way to do this
 - feature built into angular 2 which allows you to transform output in your template
 - different pipes for different types of data & for sync & async data
 - ig: username = 'max' want it in uppercase output it with the uppercase pipe     <p> {{username | uppercase }} </p>
+
+## Using Pipes
+- use it in the html file, it only changes output
+- does not change property value, instance types
+- `{{ server.instanceType | uppercase }}` changes output to uppercase
+- `{{ server.started | date }}` changes format of dates
+- 
