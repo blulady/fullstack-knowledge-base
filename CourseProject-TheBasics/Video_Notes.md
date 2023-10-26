@@ -743,5 +743,43 @@ actual way to do this
 - call it in html by 
       <strong>{{ server.name | shorten:5}}</strong>
 
-
-
+## Example: Creating a Filter Pipe
+- allowing the user to filter the servers 
+- we add <input type="text"
+- we are using two way data binding 
+    - we add <input type="text" [(ngModel)]="filteredStatus">
+    - we have to set up the new property in the ts file
+          filteredStatus = ''
+- we are going to build a pipe to filter the view
+- we can use the commandline to generate a pipe
+    `ng generate pipe` or `ng g p`
+  - will generate
+    `transform(value: unknown, ...args: unknown[]): unknown {return null;}`
+- adding an argument (the string the user will be filtering by)
+  `transform(value: unknown, filterString: string)`
+- first will check to see if there is anything to display
+  (had to change value type to any for the following)
+  `if (value.length === 0) {return value;}`
+- pass the to be filtered property here as the second argument
+    `transform(value: any, filterString: string, propertyName: string)`
+- here we check to see if the propertyName is equal to the string the user enters
+    `for (const item of value) {if (item[propertyName] === filterString) {}`
+- add an array & push the items to the array if the propertyName equals the filter string
+        const resultArray = [];
+        for (const item of value) {
+          if (item[propertyName] === filterString) {
+            resultArray.push();
+          }
+        }
+        return resultArray;
+- can add a pipe to an ngFor loop to change output
+    `*ngFor="let server of servers | filterPipe"`
+- pass the property that holds the string from the user
+    from user: `<input type="text" [(ngModel)]="filteredStatus">`
+    passing that property to the filterpipe `*ngFor="let server of servers | filterPipe: filteredStatus"`
+- pass in status because we want to filter on the status property
+  `*ngFor="let server of servers | filterPipe: filteredStatus:'status'"`
+- to make it so we need to enter a value before it will filter add
+    `|| filterString == '')` so that it will return the original value
+  `if (value.length === 0 || filterString == '') {return value;}`
+  
