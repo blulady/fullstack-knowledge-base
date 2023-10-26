@@ -719,3 +719,16 @@ actual way to do this
 - `{{ server.started | date:'fullDate' | uppercase }}`
 - order can be important, will be parsed left to right
 - if we do it the other way we get an error, because uppercase gets a date instead of a string & doesn't know what to do with that
+
+## Creating a Custom Pipe
+- create a file (shorten.pipe.ts)
+- needs a decorator `@Pipe({name: 'shorten'})`
+- needs on special method to be usable `PipeTransform` (will need to be imported from `"@angular/core"`)
+- transform needs to recieve the argument that needs to get transformed
+- transform always needs to return something (output)
+- to use the pipe we go to app.module.ts add the pipe to the declarations (& import it)
+        `declarations: [AppComponent, ShortenPipe,],`
+- now we can add the pipe in html
+
+
+
