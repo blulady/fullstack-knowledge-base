@@ -714,3 +714,8 @@ actual way to do this
 ## Where to learn more about Pipes
 - angular.io/api & then search for pipe
 
+## Chaining Multiple Pipes
+- what if you want your fomated date in upper case:
+- `{{ server.started | date:'fullDate' | uppercase }}`
+- order can be important, will be parsed left to right
+- if we do it the other way we get an error, because uppercase gets a date instead of a string & doesn't know what to do with that
