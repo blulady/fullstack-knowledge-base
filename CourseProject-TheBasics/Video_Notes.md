@@ -797,3 +797,17 @@ actual way to do this
       `pure: false`
 
 - the above change will make sure that whenever we change data on the page the pipe will be reacalculated 
+- impure data pipe updates with every change
+
+## Understanding the "async" Pipe
+- async pipe recognizes a promise object (also works with observables) & after the given amount of time will recognize that the promise resolved or the data was sent through the subscription 
+
+- create a property and set it equal to a promise
+      appStatus = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('stable')
+        },2000)
+      });
+  - the above promise resolves or reject & in the promise of the callback function, sets up a timeout that lasts 2 seconds, after that it sets the appStatus to stable
+- you call it in the html by
+      <h2>App Status: {{ appStatus | async }}</h2>
