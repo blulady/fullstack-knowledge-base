@@ -550,6 +550,7 @@ actual way to do this
 
   ** will throw error because we are calling the server component on the servers component even if we don't have an id available comment out <!-- <app-server></app-server> --> in servers html
 
+# Changing Pages with Routing
 
   # Handling Forms in Angular Apps
 
@@ -673,3 +674,28 @@ actual way to do this
 - can hard code a value or set up a property in the .ts file to put bwtn quotes
     - in the ts file `defaultQuestion = 'pet';`
     because in the html file we have <option value="pet">Your first Pet?</option>
+
+## TD: Using ngModel with Two-Way-Binding
+- we create a form, we add ngModel to get access to what ever the user entered as a reply
+    <textarea name="questionAnswer" rows="3" class="form-control" [(ngModel)]="answer" ></textarea>
+- to instantly repeat this reply 
+    in the ts file we create the property
+      `answer = '';`
+    in the html file we use it by 
+      `<p>Your reply: {{ answer }}</p>`
+
+## TD: Grouping Form Controls
+
+# Forms
+
+## Intro
+- using the template driven form
+
+## TD: Adding the shopping List form
+
+# Using Pipes To Transform Output
+
+## Introduction & Why Pipes are Useful
+- feature built into angular 2 which allows you to transform output in your template
+- different pipes for different types of data & for sync & async data
+- ig: username = 'max' want it in uppercase output it with the uppercase pipe     <p> {{username | uppercase }} </p>
