@@ -638,7 +638,29 @@ actual way to do this
     <div *ngIf="allowEdit">
     - this will only show the edit form if `allowedEdit` equals true
 
+## Configuring the Handling of Query Parameters
+- passing on the server id query parameter on from the server to the edit-server component
+- another property to the JS object we use to configure our navigation 
+og :
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+  }
+modified to pass on server id:
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+  }
+   - using preserve, if we add new ones, the old ones would actually overwrite the new ones
+
+merge our old query params with new:
+  onEdit() {
+      this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'merge'});
+    }
+
+
+
 # Changing Pages with Routing
+
+
 
   # Handling Forms in Angular Apps
 
