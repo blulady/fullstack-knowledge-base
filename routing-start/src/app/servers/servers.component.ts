@@ -20,6 +20,9 @@ export class ServersComponent implements OnInit {
 
   onReload() {
     // this.router.navigate(['servers'], {relativeTo: this.route});
+    // the navigate method doesn't know which route we are on ( vs routerLink which does)
+    // the second arg tells us what path we are currently on, relativeTo is by defualt the root path (unless we change it to the path wer are on like in the above function)
+
   }
 
 }

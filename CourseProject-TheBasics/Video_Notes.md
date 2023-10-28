@@ -375,6 +375,7 @@
 
 ## Setting up & Loading Routes
 - looking to display one component at a time
+- `{ path: 'users' }` == localhost:4200/users
 - register routes in the app.module.ts
     import { Routes, RouterModule } from "@angular/router";
     const appRoutes: Routes = [
@@ -383,6 +384,7 @@
 
     - in the imports array add
         RouterModule.forRoot(appRoutes)
+        - forRoot: allows us to register routes, recieves our appRoutes constant here as an argument 
 
 - in app.component.html
     <router-outlet></router-outlet> -special directive that marks the place in the document where we want the angular router to load the component of the currently selected route.
@@ -459,6 +461,7 @@ actual way to do this
 - to be able to access individual users dynamically
   { path: 'users/:id', component: UserComponent }
   - retreve id from path, anthing after the slash & colon would be interpreted as the id
+  - the colon indicates the parameter
 
 ## Fetching Route Parameters
 - we inject the private route into the user.component.ts constructor & we get the currently loaded route 
@@ -472,14 +475,31 @@ actual way to do this
 ## Fetching Route Parameters Reactively
 - can hard code a url   
     <a [routerLink]="['/users', 10, 'Anna']">Load Anna</a>
+    this.user = {
+      id: this.route.snapshot.params['id'],
+      name: this.route.snapshot.params['name']
+    };
     - since the link is on the user component, the URL still changes but because we are on the component, angular doesn't reinstantiate it
 - for subsequent changes we need a different approach
 
-- params.suscribe is an observable (a feature added by a 3rd party package) to work with asynchrous tasks
+- paramsSuscribe is an observable (a feature added by a 3rd party package) to work with asynchrous tasks
   - an easy way to subscribe to an event which might happen in the future & execute when it happens
   - recieves 3 arguments (3 functions)
       - fired whenever new data is sent through whenever the params change 
           (params: Params) => {this.user.id = params['id']} // update our user objects id
+
+      this.paramsSubscription = this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.user.id = params['id'];
+          this.user.name = params['name'];
+        }
+      )
+      `(params: Params)` we get the updated params as an argument, params will always be an object that holds the parameters you defined in route as properties
+      `this.user.id = params['id'];` now we update the user object (the user.id should now be params[id])
+
+  - use snapshot for cases where you know your component will be recreated
+  - use params to get informed about any changes in your route parameters
        
 ## An Important Note about Route Observables
 - angular cleans up the subscription you set up here whenever this component is destroyed
@@ -494,7 +514,7 @@ actual way to do this
               this.user.id = params['id'];
               this.user.name = params['name'];
             }
-    - then destroy it with OnDestroy (implement like onInit)
+    - then destroy the paramsSubscription with OnDestroy (implement like onInit)
         export class UserComponent implements OnInit, OnDestroy {
         
         ngOnDestroy(): void {
@@ -545,10 +565,13 @@ actual way to do this
       - this gotcha is not converting id to a number us + at beging to convert to a number
   
   3. subscribe to params observable to get any changes
-  `this.route.params.subscribe((params: Params) => {this.server = this.serversService.getServer(params['id']))`
+  `this.route.params.subscribe((params: Params) => {this.server = this.serversService.getServer(+params['id']))`
+      - don't forget to add the + to turn this id into a number as well
 
 
   ** will throw error because we are calling the server component on the servers component even if we don't have an id available comment out <!-- <app-server></app-server> --> in servers html
+
+## Setting up Child (Nested) Routes
 
 # Changing Pages with Routing
 
