@@ -656,7 +656,21 @@ merge our old query params with new:
       this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'merge'});
     }
 
+## Redirecting & Wildcard Routes
+-  404 error handling
+- redirect a vistor to a specific page when they try to visit a page we don't have
+    - setting up a router which handles all routes
+    - redirecting requests
+- Redirecting: create a new component called page-not-found
+  - in the html template say <h3> Page Not Found </h3>
+  - in the app.module.ts add the path
+      { path: 'not-found', component: PageNotFoundComponent }
+  - then add another new route & use a property to redirect to another path
+      { path: 'something', redirectTo: '/not-found' }
+  - can use double asterisk route, that is the wildcare route which catches all paths not listed in the routes array
+    - needs to be the last one in the array of routes, because once angular hits this route it doesn't look for others
 
+      - `{ path: '**', redirectTo: '/not-found' }`
 
 # Changing Pages with Routing
 
