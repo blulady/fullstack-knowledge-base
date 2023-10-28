@@ -672,6 +672,16 @@ merge our old query params with new:
 
       - `{ path: '**', redirectTo: '/not-found' }`
 
+## Redirection Path Matching
+- angular matches path by prefix
+- `{ path: '', redirectTo: '/somewhere-else' }`
+    - will match `/recipes` & `/`
+    - Angular checks if the path you entered in the URL does start with the path specified in the route. Of course every path starts with '' 
+- To fix this behavior, you need to change the matching strategy to "full" : 
+      `{ path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }`
+      - Now, you only get redirected, if the full path is '' (so only if you got NO other content in your path in this example). 
+      
+
 # Changing Pages with Routing
 
 
