@@ -572,6 +572,71 @@ actual way to do this
   ** will throw error because we are calling the server component on the servers component even if we don't have an id available comment out <!-- <app-server></app-server> --> in servers html
 
 ## Setting up Child (Nested) Routes
+- const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'users/:id/:name', component: UserComponent },
+  { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent },
+  ];
+  vs setting up nested/child Routes
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent },
+    { path: ':id/edit', component: EditServerComponent },
+  ] },
+
+- child routes of servers need a separte outlet because should be loaded nested into this servers component
+- the original html 
+      <div class="col-xs-12 col-sm-4">
+        <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
+        <app-edit-server></app-edit-server>
+        <hr>
+        <!-- <app-server></app-server> -->
+      </div>
+- instead
+      <router-outlet></router-outlet>
+      this adds a new hook which will be used on all the child routes of the route being loaded on the servers
+- the same for users
+      { path: 'users', component: UsersComponent, children: [
+        { path: ':id/:name', component: UserComponent },
+      ] },
+  -in users html
+      <!-- <app-user></app-user> -->
+      <router-outlet></router-outlet>
+  - & now it loads the endpoint info next to where we make the selection
+
+## Using Query Parameters
+- reaching edit-server component
+  - we add a button to access edit 
+    <button class="btn btn-primary" (click)="onEdit()">Edit Server</button>
+  - create the onEdit function in .ts
+    onEdit() {
+      this.router.navigate(['edit'], {relativeTo: this.route});
+    }
+    in the above function we navigate to the edit-server compoment
+       - call the navigate method (from the Router class), pass it an array ( edit, to add it to the end of the currently loaded route)
+        - we get the currently loaded route by using the realativeTo property on the secondargument & refrerencing `this.route`
+        - we need to access the router  
+            inject the router into the construction method
+            `private router: Router)`
+- To control where the user is allowed to update
+  - we want to control access based on the server id in the servers component html
+    `[queryParams]="{allowedit: server.id === 3 ?'1': '0'}"`
+      so only if server ID equals 3, will users be allowed to edit, the above is a ternary expression checkin the server id & if it's not equal to 3 we will set it to zero (the allowEdit parameter to 0)
+  - add a allowEdit property on class EditServerComponent in edit-server ts
+            `allowEdit = false;`
+  - then in edit server we want to be able to retrieve our query params
+      this.route.queryParams
+      .subscribe(
+        (queryParams: Params) => {
+          this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
+        }
+        - when ever the queryParams change, get the query params & if they are true/'1' set it equal to true otherwise set it equal to false
+  - then we add this to edit-server html
+    <h4 *ngIf="!allowEdit">You're not allowed to edit </h4>
+    <div *ngIf="allowEdit">
+    - this will only show the edit form if `allowedEdit` equals true
 
 # Changing Pages with Routing
 
