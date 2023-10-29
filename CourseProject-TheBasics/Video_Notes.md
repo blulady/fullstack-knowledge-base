@@ -807,7 +807,22 @@ merge our old query params with new:
 
       - the interface in can-deactivate-guard.service.ts forces us to implement the canDeactivate method in our component
 
-
+## Passing Static Data to a Route
+- create a new component, the error page component
+- in the html add `{{ errorMessage }}`
+- add it to app.module.ts
+- in the app-routing.module.ts create a path
+  `{ path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },`
+  here we use the data property to pass an object here, with the key message & value 'page not found'
+  - this makes the code reusable & we can display different errors
+- we are going to retrieve that whenever we load our error page component so in error-page so in error-page.component.ts create property 
+    - `errorMessage: string;`
+- inject the activated route into the constructor
+    - `constructor(private route: ActivatedRoute){}`
+- can assign it either by using the snapshot of this route & data to access message
+    - `ngOnInit() {this.errorMessage = this.route.snapshot.data['message']}`
+- or if it might change while you are stil on this page you'll want to subscribe
+    - `ngOnInit() {this.route.data.subscribe((data: Data) => {this.errorMessage = data['message'];})}`
 
 
 # Changing Pages with Routing
