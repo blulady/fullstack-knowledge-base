@@ -702,6 +702,34 @@ merge our old query params with new:
 - for example if you only want to give access to your server component/single server component/edit server component only if they are logged in
 - use the CanActivateGuard: a feature built into the angular router running code before the component is loaded
 
+## Protecting Routes with canActivate
+- add a file to root called auth-guard.service.ts
+  in this file import the CanActivate method from Angular router
+    - the CanActivate method has two arguments 1, the ActivatedRouteSnapShot & the state of the Router
+      `canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)` (will need to be imported from '@angular/router')
+    - CanActivate returns either an observable 
+      - which will also need to be imported from 'rxjs/Observable'
+      - will wrap a boolean `Observable<boolean>` (async)
+      or 
+      - a Promise also returning a boolean `Promise<boolean>` (async)
+      or 
+      - a boolean (sync)
+- we create a fake service auth.service.ts to login or out by returning a boolean, we use @Injectable (in auth-guard) & put it in the constructor to be able to reach out to our fake service
+- then we reach out to check if the fake authService.isAuthenticated() `return this.authService.isAuthenticated()` 
+- then if it's true, we return true allowing access
+      (authenticated: boolean) => {
+          if (authenticated) {
+            return true;
+- if it's not true we navigate away from the pages we are guarding by going to home '/', using router.navigate method
+        `else {this.router.navigate(['/']);`
+- have to add canActivate to the pathe you want to apply it to, our paths are currently in app-routing.module.ts
+  - can activate taeks an array of all the guards you want to apply to that path/route
+      `{ path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children:`
+- we also need to go to the app.module.ts & add the two services under providers
+      `providers: [ServersService, AuthService,  AuthGuard],`
+
+              
+
 
 # Changing Pages with Routing
 
