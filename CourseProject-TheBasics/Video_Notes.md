@@ -697,7 +697,10 @@ merge our old query params with new:
 - then in app.module.ts import your router in the imports array
     AppRoutingModule,
 
-
+## An Introduction to Guards
+- route guards: basic functionality, logic, code which ise executed before a route or loaded once you want to leave a route
+- for example if you only want to give access to your server component/single server component/edit server component only if they are logged in
+- use the CanActivateGuard: a feature built into the angular router running code before the component is loaded
 
 
 # Changing Pages with Routing
