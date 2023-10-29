@@ -860,15 +860,12 @@ og:
 - a good fall back if you can't get HTML history mode to work
 
 
+# Course Project - Routing
 
 
-# Changing Pages with Routing
+# Handling Forms in Angular Apps
 
-
-
-  # Handling Forms in Angular Apps
-
-  ## Module Introduction
+## Module Introduction
   - because it is a single page application you don't submit the form to the server but handle it through angular
   - to submit something to the server you need to reach out via Angular's HTTP service to that server
   Angular will let you 
