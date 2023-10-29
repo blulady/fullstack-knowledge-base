@@ -872,7 +872,20 @@ og:
     - have to add pathMatch to the empty path`{path: '', redirectTo: '/recipes', pathMatch: 'full'}`
     - need links
 
+## Adding Navigation to the App 
+- replace
+<li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
+<li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+
+- with links
+<li routerLinkActive="active"><a routerLink="/recipe-book">Recipes</a></li>
+<li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+
+- delete the onSelect() function
+- remove the eventEmitter & Output
+ ` @Output() featureSelected = new EventEmitter<string>();`
 # Handling Forms in Angular Apps
+
 
 ## Module Introduction
   - because it is a single page application you don't submit the form to the server but handle it through angular
