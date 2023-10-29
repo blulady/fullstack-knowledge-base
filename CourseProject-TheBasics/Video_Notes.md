@@ -845,6 +845,22 @@ merge our old query params with new:
 - we can then comment out the ngOnInit code and get our server by binding the data observable, we will now get back our data of type Data, can then assign our server to this.server 
 `this.route.data.subscribe((data: Data) =>{this.server = data['server']});`
 
+## Understanding Location Strategies
+- the server hosting your angular single page application hast to be configured so that in the case of a 404 erro it returns the index.html file because
+      - all urls are parsed by the server first (not angular)
+      - if you can't fall back to using the hash sign
+og:
+  `@NgModule({ imports: [RouterModule.forRoot(appRoutes)`
+- enable it in your app-routing.module.ts by adding
+  `RouterModule.forRoot(appRoutes, {useHash: true})`
+- the hashtag informs your webserver to only care about the part in the url before the hash
+       `http://localhost:4200/#/users`
+- this will run even on servers which don't return the index.html file in case of 404 errors
+- everything after will be parsed by the client, by angular
+- a good fall back if you can't get HTML history mode to work
+
+
+
 
 # Changing Pages with Routing
 
