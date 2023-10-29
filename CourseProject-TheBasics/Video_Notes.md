@@ -680,7 +680,25 @@ merge our old query params with new:
 - To fix this behavior, you need to change the matching strategy to "full" : 
       `{ path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }`
       - Now, you only get redirected, if the full path is '' (so only if you got NO other content in your path in this example). 
-      
+
+## Outsourcing the Route Configuration
+- if you have more than a few routes you create a file for routing called
+  app-routing.module.ts
+  add the appRoutes array to the file (make sure to add all the imports) 
+  add   
+      @NgModule({
+        imports: [
+          RouterModule.forRoot(appRoutes)
+        ],
+        exports: [RouterModule]
+      })
+
+      export class AppRoutingModule {}
+- then in app.module.ts import your router in the imports array
+    AppRoutingModule,
+
+
+
 
 # Changing Pages with Routing
 
