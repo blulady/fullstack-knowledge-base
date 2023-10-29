@@ -754,6 +754,61 @@ merge our old query params with new:
         this.authService.logout();
       }
 
+## Controlling Navigations with CanDeactivate
+- want to ask the user if they really want to leave
+- edit-server.component.ts
+  add a property `changesSaved = false;` which we want to change whenever we click updateServer
+  so we add `this.changesSaved = true;` to onUpdateServer()
+- after changes are saved we want to navigate away, so we inject the router type into the constructor `private router: Router`
+  add `this.router.navigate(['../'], {relativeTo: this.route});` after we save the changes in onUpdateServer, to go up one level to the last loaded server
+- now we add the part where we ask if they want to leave by creating a guard in the edit-server file
+- create can-deactivate-guard.service.ts & create an interface to export
+  - an interface is a contract that can be imported by another class, that forces the class to provide some logic (ig: the canDeactivate function), the interface does provide information about what the function should look like
+    `canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean}`
+    - the function takes no arguments & returns a boolean
+  - then create a class to export `CanDeactivateGuard`& this guard will implment CanDeactivate (an interface provided by the angular router, it is a generic type & will wrap our interface) it will force some component or class to implement the CanDeactivate method (where it is called in this case the EditServerComponent)
+  - the CanDeactivate method we put here will be called by angular when we try to navigate away from a path
+  `canDeactivate(component: CanComponentDeactivate,`
+    - has the component we are currently on as an argument, the compoenent we are currently on needs to be of type CanComponentDeactivate which means it needs to be a compoenent that has this interface implemented & a canDeactivate method
+  `currentRoute: ActivatedRouteSnapshot,`
+    - recieve the current route as an argument
+  `currentState: RouterStateSnapshot,`
+    - recieve the current state of a route
+  `nextState?: RouterStateSnapshot`
+    - where we will want to go, will be called at the end when we try to leave ? == optional arg
+  `return component.canDeactivate();`
+    - call canDeactivate on the component we are currently on
+    - this is why we need to implement this interface in this component, why we created an interface in the first place 
+     ====> now angular router can execute canDeactivate in our service & can rely on the fact that the component we are currently on has canDeactivate function, the connection between guard & compoenent 
+
+- in app-routing.module.ts
+  add the guard to the path/route `{ path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },`
+- in app.module.ts add the guard to the providers array `providers: [ServersService, AuthService,  AuthGuard, CanDeactivateGuard]`
+- in edit-server.component.ts
+  - CanDeactivateGuard will call CanDeactivate in our component but for it to work on the edit-server.component we need to implement our CanComponentDeactivate interface in edit-server.component.ts
+  `export class EditServerComponent implements OnInit, CanComponentDeactivate {`
+  - add the function to the EditServerComponent Class & the logic required to decide weather we can leave or not, this logic will be run whenever the CanDeactivateGuard is checked by the angular router 
+      
+      canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+        if (!this.allowEdit) {
+          return true;
+        }
+        if ((this.serverName !== this.server.name || this.serverStatus !== this.server.status) && !this.changesSaved) {
+          return confirm("Do you want to discard the changes?");
+        } else {
+          return true
+        }
+      }
+      - the above function will return an Observable boolean, a Promise boolean or just a regular boolean
+        1. we check to see if we are allowed to edit this server because if we aren't, we are allowed to leave `if (!this.allowEdit) { return true`
+        2. otherwise will check if the server name/status here is unlike the one we had at the beginning (changed) and the changes were not saved, return a confirm dialog
+        2. else return true because either nothing was changed or we saved the changes
+
+
+      - the interface in can-deactivate-guard.service.ts forces us to implement the canDeactivate method in our component
+
+
+
 
 # Changing Pages with Routing
 
