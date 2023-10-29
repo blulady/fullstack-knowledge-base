@@ -878,12 +878,19 @@ og:
 <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
 
 - with links
-<li routerLinkActive="active"><a routerLink="/recipe-book">Recipes</a></li>
-<li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+<li><a routerLink="/recipe-book">Recipes</a></li>
+<li><a routerLink="/shopping-list">Shopping List</a></li>
 
 - delete the onSelect() function
 - remove the eventEmitter & Output
  ` @Output() featureSelected = new EventEmitter<string>();`
+
+# Marking Active Routes
+- mark what link you are on with <li routerLinkActive="active">
+<li routerLinkActive="active"><a routerLink="/recipe-book">Recipes</a></li>
+<li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+
+
 # Handling Forms in Angular Apps
 
 
