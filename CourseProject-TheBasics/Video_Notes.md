@@ -738,6 +738,22 @@ merge our old query params with new:
   `{ path: 'servers', canActivateChild: [AuthGuard], component: ServersComponent, children:`
 - now we can access server url without being able to access any of it's children
 
+## Using A Fake Auth Service
+- add a couple buttons to the home page html
+    <button class="btn btn-default" (click)="onLogin()">Login</button>
+    <button class="btn btn-default" (click)="onLogout()">Logout</button>
+- inject the auth service into the home component
+      `constructor(private router: Router, private authService: AuthService) { }`
+
+- add the functions to the HomeComponent class to call the functions from the auth service
+      onLogin() {
+        this.authService.login();
+      }
+
+      onLogout() {
+        this.authService.logout();
+      }
+
 
 # Changing Pages with Routing
 
