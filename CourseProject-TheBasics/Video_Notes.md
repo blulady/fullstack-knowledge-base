@@ -824,6 +824,27 @@ merge our old query params with new:
 - or if it might change while you are stil on this page you'll want to subscribe
     - `ngOnInit() {this.route.data.subscribe((data: Data) => {this.errorMessage = data['message'];})}`
 
+## Resolving Dynamic Data with the Resolve Guard
+- we have some dynamic data we have to fetch before a route can be displayed or can be rendered
+- resolver allows us to run some code before a route is rendered, fetch data before code is run
+- add a new file server-resolver.server
+  - resolve ( from @angular/router) is a generic type that wraps the data/item it will fetch in the end, which will be a server & we don't import the server object but the object we define looks the same
+        `export class ServerResolver implements Resolve<{id: number, name:string, status:string}>`
+  - resolve interface requires us to implement the resolve method, it takes two arguments the route & the state snapshot
+        `resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)`
+  - returns an Observable that is a server (here he creates the server interface to not have to type everything out), or a promise that resoves to a server or just a server
+    `resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<Server> | Promise<Server> | Server {`
+  - inject server by adding @Injectable to the class & `constructor(private serversService: ServersService) {}`
+
+  - here we reachout to servers & call the getServer function which needs the id of the server so we call route.params to get the id & use + to turn it to a number
+  `return this.serversService.getServer(+route.params['id']);`
+- then we have to add it to app.module.ts providers
+`providers: [ServersService, AuthService,  AuthGuard, CanDeactivateGuard, ServerResolver],`
+- then add it to the route it's going to be used on, we add the resolve property & then we map the resolvers using
+`{ path: ':id', component: ServerComponent, resolve: {server: ServerResolver} }`
+- we can then comment out the ngOnInit code and get our server by binding the data observable, we will now get back our data of type Data, can then assign our server to this.server 
+`this.route.data.subscribe((data: Data) =>{this.server = data['server']});`
+
 
 # Changing Pages with Routing
 
