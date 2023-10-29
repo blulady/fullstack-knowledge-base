@@ -728,7 +728,15 @@ merge our old query params with new:
 - we also need to go to the app.module.ts & add the two services under providers
       `providers: [ServersService, AuthService,  AuthGuard],`
 
-              
+## Protecting Child (nested) Routes with CanActivateChild
+- use CanActivateChild instead by importing it & implementing it `export class AuthGuard implements CanActivate, CanActivateChild`
+- need to create a canActivateChild function that takes the same args as CanActivate
+    `canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean`
+- since it uses the same logic as CanActivate & returns a bool, we just call canActivate passing the route & state as arguments
+    `{return this.canActivate(childRoute, state);`
+- we added the CanActivateChild interface & can now use a different hook in our router instead
+  `{ path: 'servers', canActivateChild: [AuthGuard], component: ServersComponent, children:`
+- now we can access server url without being able to access any of it's children
 
 
 # Changing Pages with Routing
