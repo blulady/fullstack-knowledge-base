@@ -862,7 +862,15 @@ og:
 
 # Course Project - Routing
 ## Planning the general structure
-
+- the @NgModule() decorator turns the class into an angular module
+- create the file app-routing.module.ts *add path & other contents
+- register the app-routing module with app.module.ts by adding `AppRoutingModule` to array of imports
+- in app.component.html render the routes by
+    - getting rid of <app-recipe-book *ngIf="loadedFeature === 'recipe'"></app-recipe-book>
+                    <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+    - replace the above <router-outlet></router-outlet>
+    - have to add pathMatch to the empty path`{path: '', redirectTo: '/recipes', pathMatch: 'full'}`
+    - need links
 
 # Handling Forms in Angular Apps
 
