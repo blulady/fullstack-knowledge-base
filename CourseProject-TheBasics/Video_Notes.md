@@ -909,6 +909,21 @@ og:
   & adding <router-outlet></router-outlet>
 - add `{path: ':id', component: RecipeDetailComponent}` to the children array
 
+## Configuring Route Parameters
+- we pass the id in the route which is a dynamic parameter, should be able to load a recipe by th Id (position in the array)
+- get id from the router (this will only work for the first time we load detail - not what we want to use here)
+    - inject ActivatedRoute into constructor
+      `private route: ActivatedRoute`
+    - bind id to the ide from the activated route
+      `const id = this.route.snapshot.params['id']`
+- use route & params observable & subscribe to that observable
+  `this.route.params.subscribe((params: Params) => {this.id = +params['id'];});` * import Params from @angular/router
+  - store id as a property `id: number;`
+  - to do this we need to load our recipe from recipe service
+    - we a a function to get a single recipe from our recipe service
+      `getRecipe(index:number) {return this.recipes[index];}`
+    - we fetch the recipe when ever the id changes, then call .getRecipe & pass this.id
+    `this.recipe = this.recipeService.getRecipe(this.id)});`
 
 # Handling Forms in Angular Apps
 
