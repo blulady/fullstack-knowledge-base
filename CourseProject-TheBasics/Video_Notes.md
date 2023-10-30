@@ -955,6 +955,16 @@ og:
     `{path: 'new', component: RecipeEditComponent}` *make sure this path comes before `:id` or it will error because there is no recipe with the id new
     `{path: ':id/edit', component: RecipeEditComponent}`
 
+## Retrieving Route Parameters
+- to retrieve the id & determin if we are in edit mode:
+  - in recipe-edit
+    create a property `id: number;`
+    retrieve the id (dynamically in NgOnInit), use the route & subscribe to the params observable, we store the id in the id property
+    `this.route.params.subscribe((params: Params) => {this.id = +params['id'];} )`
+    create property `editMode = false;` * initally assume we are creating a new recipe
+    check edit mode whenever the parameters change 
+      `this.editMode = params['id'] != null;` * if there is an id, we are in editing mode otherwise, it is a new recipe
+
 
 # Handling Forms in Angular Apps
 
