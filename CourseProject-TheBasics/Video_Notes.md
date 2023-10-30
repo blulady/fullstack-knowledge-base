@@ -885,11 +885,18 @@ og:
 - remove the eventEmitter & Output
  ` @Output() featureSelected = new EventEmitter<string>();`
 
-# Marking Active Routes
+## Marking Active Routes
 - mark what link you are on with <li routerLinkActive="active">
 <li routerLinkActive="active"><a routerLink="/recipe-book">Recipes</a></li>
 <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
 
+## Fixing Page Reload Issues
+- eeeee wan't working in the first place
+
+## Child Routes:
+- do it yourself
+## Adding Child Routing Together
+- 
 
 # Handling Forms in Angular Apps
 
