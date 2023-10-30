@@ -896,7 +896,19 @@ og:
 ## Child Routes:
 - do it yourself
 ## Adding Child Routing Together
-- 
+- we create a new component to have the recipes start with
+- in html <h3>Please select a Recipe!!</h3>
+- add the path to recipe-book children array `{path: 'shopping-list', component: ShoppingListComponent}`
+- because the recipe-book component is where the child routes are registered, call router outlet in recipe-book html
+- getting rid of 
+    <app-recipe-detail
+    *ngIf="selectedRecipe; else infoText"
+    [recipe]="selectedRecipe" ></app-recipe-detail>
+    <ng-template #infoText>
+      <p>Please select a Recipe</p>
+  & adding <router-outlet></router-outlet>
+- add `{path: ':id', component: RecipeDetailComponent}` to the children array
+
 
 # Handling Forms in Angular Apps
 
