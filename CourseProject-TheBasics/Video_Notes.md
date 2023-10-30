@@ -925,6 +925,21 @@ og:
     - we fetch the recipe when ever the id changes, then call .getRecipe & pass this.id
     `this.recipe = this.recipeService.getRecipe(this.id)});`
 
+## Passing DYnamic Parameters to Links
+- because we have a dynamic segment in the path (id) so this is where you bind router link, to pass the array & configure the segments in the path
+  - here all we need is the id in recipe-item.component.html
+    `[routerLink]="[index]"`
+  - to get the id, have to pass extra information to the recipe-item component
+- in recipe-item.component.ts add
+    `@Input() index: number;` now we can pass in the index of this item from the recipe-list
+- in recipe-list.component.html add
+    *ngFor="let recipeElement of recipes; let i = index"
+     [recipe]="recipeElement"
+     [index]="i"
+  to
+    *ngFor="let recipeElement of recipes"
+     [recipe]="recipeElement"
+
 # Handling Forms in Angular Apps
 
 
