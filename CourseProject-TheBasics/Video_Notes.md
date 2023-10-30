@@ -948,6 +948,12 @@ og:
   routerLinkActive="active"
   class="list-group-item clearfix">
 
+## Adding Editing Routes
+- create a new component called recipe-edit inside recipe-book
+    ng g c recipe-book/recipe-edit
+- register two new routing paths in app-routing.module.ts
+    `{path: 'new', component: RecipeEditComponent}` *make sure this path comes before `:id` or it will error because there is no recipe with the id new
+    `{path: ':id/edit', component: RecipeEditComponent}`
 
 
 # Handling Forms in Angular Apps
