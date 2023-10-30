@@ -940,6 +940,16 @@ og:
     *ngFor="let recipeElement of recipes"
      [recipe]="recipeElement"
 
+## Styling Active Recipe Items
+- add routerLinkActive="active"
+  to
+  <a style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+
+
+
 # Handling Forms in Angular Apps
 
 
