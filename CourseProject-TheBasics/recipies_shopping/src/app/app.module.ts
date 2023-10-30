@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { RouterModule} from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +13,8 @@ import { SharedComponent } from './shared/shared.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.component';
+import { ShoppingListService } from './shopping-list/shoppin-list.service';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.co
     HeaderComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    DropdownDirective,
     RecipeBookComponent,
     RecipeDetailComponent,
     ModelDataComponent,
@@ -35,7 +37,7 @@ import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.co
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
