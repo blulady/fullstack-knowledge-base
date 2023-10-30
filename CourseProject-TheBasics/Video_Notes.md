@@ -965,6 +965,21 @@ og:
     check edit mode whenever the parameters change 
       `this.editMode = params['id'] != null;` * if there is an id, we are in editing mode otherwise, it is a new recipe
 
+## Programmatic Navigation to the Edit Page
+- recipe-list.component.html `(click)="onNewRecipe()"`
+- recipe-list.component.ts
+  inject router into the constructor method `private router: Router` & `private route: ActivatedRoute`
+  use the router to use the navigate method to target the path, we're going to use our current path so we also need to inform the router of that
+  `onNewRecipe() {this.router.navigate(['new'], {relativeTo: this.route})`
+EditRecipe
+  in recipe-detail html `(click)="OnEditRecipe()"`
+  in recipe-detail ts will need acces to the router `private router: Router`
+  then we will navigate to the current id & then edit
+    `this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);`
+  or
+    `this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});` we go back a level, grab the id & add edit on to the end
+
+    
 
 # Handling Forms in Angular Apps
 
