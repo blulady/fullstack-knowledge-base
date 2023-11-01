@@ -979,7 +979,8 @@ EditRecipe
   or
     `this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});` we go back a level, grab the id & add edit on to the end
 
-    
+## One Note about Route Observables
+- when using your own observables you will need to "clean up" your functions
 
 # Handling Forms in Angular Apps
 
