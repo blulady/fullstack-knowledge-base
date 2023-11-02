@@ -1293,7 +1293,7 @@ once it loads
         2. the request body, in this case the postData object that we pass into the function, angular will turn it into json data for us
 
 - angular doesn't send the request if no one is subscribed to the observable
-`this.http.post('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/post.json', postData).subscribe(responseData => {console.log(responseData);`
+`this.http.post('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json', postData).subscribe(responseData => {console.log(responseData);`
 
 ## GETting Data
 - get requests has no body because you are requesting data, not posting it
@@ -1321,4 +1321,21 @@ once it loads
     `const postsArray: Post[] = [];`
 - or better yet add it to get method by adding the response body type
     `.get<{[key: string]: Post}>('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json')`
-    
+
+## Outputting Posts
+- add loaded posts to posts
+    `.subscribe(posts => {this.loadedPosts = posts;});`
+- use it in the template
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <p *ngIf="loadedPosts.length < 1" >No posts available!</p>
+      <ul class="list-group" *ngIf="loadedPosts.length >= 1">
+        <li class="list-group-item" *ngFor="let post of loadedPosts">
+          <h3>{{post.title}}</h3>
+          <p>{{post.content}}</p>
+        </li>
+      </ul>
+    </div>
+
+

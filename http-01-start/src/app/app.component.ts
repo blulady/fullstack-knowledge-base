@@ -9,7 +9,7 @@ import { Post } from './post.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts: Post[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: Post) {
     // Send Http request
-    this.http.post<{name: string}>(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/post.json`, postData).subscribe(responseData => {
+    this.http.post<{name: string}>(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json`, postData).subscribe(responseData => {
       console.log(responseData);
     });
   }
@@ -45,8 +45,12 @@ export class AppComponent implements OnInit {
       return postsArray;
     }))
     .subscribe(posts => {
-      console.log(posts);
+      this.loadedPosts = posts;
     });
   }
 
+
+    // private fetchPosts() {
+    //   this.http.get('')
+    // }
 }
