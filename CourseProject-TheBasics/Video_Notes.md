@@ -1408,3 +1408,27 @@ once it loads
 - we call & subscribe & clear my loaded posts arry in the component
       `onClearPosts() {this.postsService.deletePosts().subscribe(() => {this.loadedPosts = [];});}`
 
+## Handling Errors
+- surver or internet fails,
+- can pass more arguments to subscribe & the second arg is a function that triggers whenever an error is thrown
+- create a new property `error = null;`
+- in html we only want to display if there is an error
+      <p *ngIf="isFetching && !error">Loading...</p>
+      <div class="alert alert-danger" *ngIf="error">
+        <h1> An Error Occured </h1>
+        <p>{{ error }}</p>
+- in the appComponent we add that second arg
+      onFetchPosts() {
+    this.isFetching = true;
+    this.postsService.fetchPosts().subscribe(posts=> {
+      this.isFetching = false;
+      this.loadedPosts = posts;
+    }, error => {
+      this.error = error.message;
+     });
+  }
+
+- the content of the error message depends on the API you are talking to
+
+
+
