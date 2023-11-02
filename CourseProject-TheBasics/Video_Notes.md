@@ -1442,5 +1442,9 @@ once it loads
     - then clean up after our subscription 
     ` ngOnDestroy() {this.errorSub.unsubscribe();}`
 
-
+##Using the catchError Operator
+- `catchError } from "rxjs/operators"`
+- create a new observable to wrap the error & can dow that with ` throwError } from "rxjs";`  
+  - throwError will yield a new observable by wrapping an error
+    `   return postsArray;}), catchError(errorRes => {return throwError(errorRes);}))`
 
