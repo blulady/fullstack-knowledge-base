@@ -1242,3 +1242,20 @@ EditRecipe
   - the above promise resolves or reject & in the promise of the callback function, sets up a timeout that lasts 2 seconds, after that it sets the appStatus to stable
 - you call it in the html by
       <h2>App Status: {{ appStatus | async }}</h2>
+
+
+
+
+
+
+# Making Http Requests
+
+## How does angular interact with Backends?
+- generate data in the app & want to store the data in a database
+- fetch data when app restarts, user revisits
+- don't connect angular directly to the db bc everyone can inspect your js code that is running in the browser
+- no store credentials
+- send http requests & get http responses to/from a server
+- a server is defined as an api (rest or graphql)
+- when you visit urls getting back data mostly (not HTML) in the json format 
+- can communicate with the APIs & on that server, you can have code that interacts w/db to store & fetch data
