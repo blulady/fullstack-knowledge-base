@@ -1358,3 +1358,33 @@ once it loads
         </li>
       </ul>
       <p *ngIf="isFetching">Loading...</p>
+
+## Using a Service for Http Requests
+- so that components are lean & only concerned with template logic
+- create posts.service.ts
+- using `@Injectable({providedIn: 'root'})` means you don't have to add it to app.module.ts providers array
+- in the class PostsService want to have HTTP request methods & get the responses in the front end
+    constructor(private http:HttpClient) {}
+
+  createAndStorePost(title: string, content: string) {
+    const postData: Post = {title: title, content: content};
+    this.http.post<{name: string}>(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json`, postData).subscribe(responseData => {
+      console.log(responseData);
+    });
+  }
+  fetchPosts() {
+    this.http
+    .get<{[key: string]: Post}>('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json')
+    .pipe(map((responseData: { [key: string]: Post}) => {
+      const postsArray: Post[] = [];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          postsArray.push({ ...responseData[key], id: key});
+        }
+      }
+      return postsArray;
+    }))
+    .subscribe(posts => {
+    });
+  }
+
