@@ -1265,3 +1265,20 @@ EditRecipe
 - the HTTP verb (put, post, get)
 - headers (metadata ig: default headers appeneded to request for you by the browser or/and angular or append your own headers)
 - body (core data to update the db on post put & patch requests)
+
+## Backend (Firebase)
+- a whole back-end solution that gives a REST API
+- go to firebase.com
+- go to console
+- create project
+- default settings
+- continue
+once it loads
+- go to build
+- go to Realtime Database
+- create database
+- start in testmode
+- can already send requests to the url they give us
+
+
+
