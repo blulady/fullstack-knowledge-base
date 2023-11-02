@@ -1430,5 +1430,17 @@ once it loads
 
 - the content of the error message depends on the API you are talking to
 
+## Using Subjects for Error Handling
+- in posts.service.ts
+  - add a new property `error = new Subject<string>();`
+  - add the second error argument to createAndStorePost
+      `error => {this.error.next(error.message);});`
+  - the we subscribe to it whereever we might be interested in the erro message in this case in thte app.component.ts
+      `this.postsService.error.subscribe(errorMessage => {this.error = errorMessage;});`
+    - create another property `private errorSub: Subscription;`
+    - store our subscription in the above property in ngOnInit `this.errorSub = this.postsService.error`
+    - then clean up after our subscription 
+    ` ngOnDestroy() {this.errorSub.unsubscribe();}`
+
 
 
