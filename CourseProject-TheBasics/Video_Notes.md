@@ -1388,3 +1388,19 @@ once it loads
     });
   }
 
+## Services & Components Working Together
+- goint to subscribe in the appComponent rather than the service
+- the component is for the part related to your template & subscribe in the component, while the service handles the logic & returns the observable
+- return the prepared observable in fetch posts in the service
+    `return this.http...`
+- in the appComponent add
+  in ngOnInit & onFetchPosts()
+    this.isFetching = true;
+    this.postsService.fetchPosts().subscribe(posts=> {
+      this.isFetching = false;
+      this.loadedPosts = posts;
+    });
+
+
+
+
