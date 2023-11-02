@@ -1293,8 +1293,14 @@ once it loads
         2. the request body, in this case the postData object that we pass into the function, angular will turn it into json data for us
 
 - angular doesn't send the request if no one is subscribed to the observable
-`this.http.post(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/json`, postData).subscribe(responseData => {console.log(responseData);`
+`this.http.post('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/post.json', postData).subscribe(responseData => {console.log(responseData);`
 
+## GETting Data
+- get requests has no body because you are requesting data, not posting it
+- dp meed tp subscripe, no subscription no request
+    `this.http.get('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json').subscribe(posts => {console.log(posts);})`
 
+- add fetchPosts function to ngOnInit so that whenever the app loads it will fcall the function
+    `this.fetchPosts();`
 
 
