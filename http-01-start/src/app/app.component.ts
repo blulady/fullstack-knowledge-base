@@ -15,7 +15,9 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    console.log(postData);
+    this.http.post(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/json`, postData).subscribe(responseData => {
+      console.log(responseData);
+    });
   }
 
   onFetchPosts() {

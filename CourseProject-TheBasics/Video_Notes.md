@@ -1280,5 +1280,21 @@ once it loads
 - start in testmode
 - can already send requests to the url they give us
 
+## Sending a POST Request
+- in app.module.ts
+      `import { HttpClientModule } from '@angular/common/http'; `
+      & add HttpClientModule to imports
+
+- in app.component.ts
+  `constructor(private http: HttpClient) {}`
+  in the onCreatePost add
+    `this.http.post` this takes 3 arguments 
+        1. the url we want to send the request to `https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/` & we add the folder we want to send it to `https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/post.json`
+        2. the request body, in this case the postData object that we pass into the function, angular will turn it into json data for us
+
+- angular doesn't send the request if no one is subscribed to the observable
+`this.http.post(`https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/json`, postData).subscribe(responseData => {console.log(responseData);`
+
+
 
 
