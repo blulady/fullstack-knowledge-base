@@ -1338,4 +1338,23 @@ once it loads
       </ul>
     </div>
 
-
+## Showing a Loading Indicator
+- create property on class AppComponent in app.component.ts
+    `isFetching = false;`
+- set it to true whenever you start fetching posts
+    `private fetchPosts() {this.isFetching = true;`
+- the in subscribe function set it back to false
+    `    .subscribe(posts => {this.isFetching = false;`
+- add it to templates:
+  1. show no posts available if we don't have any and we are not fetching
+  2. only output posts if we are not currently fetching
+  3. third senaro where we are fetching
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <p *ngIf="loadedPosts.length < 1 && !isFetching" >No posts available!</p>
+      <ul class="list-group" *ngIf="loadedPosts.length >= 1 && !isFetching">
+        <li class="list-group-item" *ngFor="let post of loadedPosts">
+          <h3>{{post.title}}</h3>
+          <p>{{post.content}}</p>
+        </li>
+      </ul>
+      <p *ngIf="isFetching">Loading...</p>
