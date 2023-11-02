@@ -1401,6 +1401,10 @@ once it loads
       this.loadedPosts = posts;
     });
 
-
-
+## Sending a DELETE Request
+- http.delete requires a url to send the delete request to
+- in the service
+    `deletePosts() {return this.http.delete('https://ng-complete-guide-8c897-default-rtdbfirebaseio.com/posts json');}`
+- we call & subscribe & clear my loaded posts arry in the component
+      `onClearPosts() {this.postsService.deletePosts().subscribe(() => {this.loadedPosts = [];});}`
 
