@@ -1259,3 +1259,9 @@ EditRecipe
 - a server is defined as an api (rest or graphql)
 - when you visit urls getting back data mostly (not HTML) in the json format 
 - can communicate with the APIs & on that server, you can have code that interacts w/db to store & fetch data
+
+## The Anatomy of an Http Request
+- the url (API endpoint ig `/posts/1`)
+- the HTTP verb (put, post, get)
+- headers (metadata ig: default headers appeneded to request for you by the browser or/and angular or append your own headers)
+- body (core data to update the db on post put & patch requests)
