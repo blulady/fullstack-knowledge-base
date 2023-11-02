@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
       this.isFetching = false;
       this.loadedPosts = posts;
     }, error => {
+      this.isFetching = false
       this.error = error.message;
      });
   }
@@ -59,6 +60,10 @@ export class AppComponent implements OnInit {
     this.isFetching = true;
     this.postsService.fetchPosts();
 
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 
   ngOnDestroy() {

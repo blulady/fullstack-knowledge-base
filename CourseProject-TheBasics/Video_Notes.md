@@ -1448,3 +1448,10 @@ once it loads
   - throwError will yield a new observable by wrapping an error
     `   return postsArray;}), catchError(errorRes => {return throwError(errorRes);}))`
 
+Error Handling & UX
+- add to the html
+  `<button class="btn btn-danger" (click)="onHandleError()">Okay</button>`
+- add to component ts
+  `onHandleError() {this.error = null;}`
+  `error => {this.isFetching = false`
+
