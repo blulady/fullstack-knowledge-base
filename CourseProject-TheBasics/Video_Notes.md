@@ -1524,4 +1524,10 @@ once it loads
      `intercept(req: HttpRequest<any>, next: HttpHandler) {console.log('Request is on its way'); return next.handle(req);}`
 - have to provide the service by going to the app.module & adding a javascript object to the providers array 
   `providers: [{provide: HTTP_INTERCEPTORS, userClass: AuthInterceptorService, multi: true}],`
-  
+- can restrict by adding 
+  `intercept(req: HttpRequest<any>, next: HttpHandler) {if (req.url ==)`
+
+## Manipulating Request Objects 
+- inside an intercepter you can manipulate the request object by creating a new one & returning that new object in the next.handle function
+   ` const modifiedRequest = req.clone({headers: req.headers.append('asdfasd', 'asdfsadf')})`
+   `return next.handle(modifiedRequest);`
