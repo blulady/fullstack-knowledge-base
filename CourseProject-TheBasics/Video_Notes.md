@@ -1513,3 +1513,15 @@ once it loads
     })
 - will get a null value back because the text doesn't match the typing in get
 
+## Introducing Interceptors
+- want to attach a custom header to all requests (like in auth), add intercepters
+- create file auth-interceptor.service.ts
+- the class will implement an HttpInterceptor interface from @angular/common/http
+- that interface has an intercept method that gets two args: 
+    - request (HttpRequest from @angular/common/http)
+    - next ( a function that will forward the request) of type HttpHandler also imported from @angular/common/http
+  - interceptor runs code before your quests leaves the app, then have to return the result that next.handle yeilds us
+     `intercept(req: HttpRequest<any>, next: HttpHandler) {console.log('Request is on its way'); return next.handle(req);}`
+- have to provide the service by going to the app.module & adding a javascript object to the providers array 
+  `providers: [{provide: HTTP_INTERCEPTORS, userClass: AuthInterceptorService, multi: true}],`
+  
