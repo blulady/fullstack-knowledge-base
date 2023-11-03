@@ -1545,4 +1545,8 @@ once it loads
       }
     ));
 
-    
+## Multiple Interceptors
+- the order that you provide your interceptors in the app module matter because that is the order in which they are executed
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+              {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true}],
+              
