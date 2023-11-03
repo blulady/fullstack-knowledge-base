@@ -1498,6 +1498,18 @@ once it loads
     }).pipe(tap(event => {
       console.log(event);
       if (event.type === HttpEventType.Response)
-      
 
+## Changing the Response Body Type
+- can also gain access to the response typ from this JS object that you access the headers & params from
+-  default is json & angular converts it to a JS object 
+     {
+      observe: 'events',
+      responseType: 'json'
+    })
+- you can tell angular to make it a blob or text
+       {
+      observe: 'events',
+      responseType: 'text'
+    })
+- will get a null value back because the text doesn't match the typing in get
 
