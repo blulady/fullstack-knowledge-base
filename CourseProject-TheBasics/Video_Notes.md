@@ -1448,10 +1448,15 @@ once it loads
   - throwError will yield a new observable by wrapping an error
     `   return postsArray;}), catchError(errorRes => {return throwError(errorRes);}))`
 
-Error Handling & UX
+## Error Handling & UX
 - add to the html
   `<button class="btn btn-danger" (click)="onHandleError()">Okay</button>`
 - add to component ts
   `onHandleError() {this.error = null;}`
   `error => {this.isFetching = false`
+
+## Settubg Headers
+- all http verbs have an extra last argument which is an object where you can configure that request
+- `.get<{[key: string]: Post}>('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json', {headers: new HttpHeaders({"Custom-Header": "Customized_Header"})})`
+   - headers takes a new headers object tath you customize, import it from `@angular/common/http;`
 
