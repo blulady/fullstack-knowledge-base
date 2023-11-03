@@ -1473,3 +1473,31 @@ once it loads
 
     headers: new HttpHeaders({"Custom-Header": "Customized_Header"}),
       params: searchParams
+
+## Observing Different Types of Responses
+- if you need access to the entire response object (status code, headers, ...)
+  - change the observe key
+  from the create & store function
+    postData,
+    {
+      observe: 'response'
+    }
+ - looking at the event ( from the deletePosts function)
+    {
+      observe: 'events'
+    });
+    events
+  - tap from rxjs/operators allows us to execute code w/o altering the response
+            observe: 'events'
+          }).pipe(tap(event => {
+          console.log(event);
+          })
+  - HttpEventType } from '@angular/common/http';
+    to check response number (0= sent 4 equals response)
+      observe: 'events'
+    }).pipe(tap(event => {
+      console.log(event);
+      if (event.type === HttpEventType.Response)
+      
+
+
