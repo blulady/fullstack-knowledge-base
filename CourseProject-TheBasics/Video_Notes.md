@@ -1460,3 +1460,16 @@ once it loads
 - `.get<{[key: string]: Post}>('https://ng-complete-guide-8c897-default-rtdb.firebaseio.com/posts.json', {headers: new HttpHeaders({"Custom-Header": "Customized_Header"})})`
    - headers takes a new headers object tath you customize, import it from `@angular/common/http;`
 
+## Adding Query Params
+- can attach query parameters to http requests
+    {
+      headers: new HttpHeaders({"Custom-Header": "Customized_Header"}),
+      params: new HttpParams().set('print', 'pretty')
+    })
+- multible params
+  `let searchParams = new HttpParams();
+    searchParams = searchParams.append('print', 'pretty');
+    searchParams = searchParams.append('custom', 'key');`
+
+    headers: new HttpHeaders({"Custom-Header": "Customized_Header"}),
+      params: searchParams
