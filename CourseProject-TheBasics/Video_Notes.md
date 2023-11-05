@@ -1573,13 +1573,21 @@ once it loads
   - in local storage of a browser & attaches that token to any request the client sends to the server that needs to be authenticated
   - the server is able to validate that token because of it's algorithm & private key which is only known to the server
 
-  ## Adding the Auth Page
+## Adding the Auth Page
 - auth page is offered in an unauthenticated state
 - other pages should be locked down if not authed
 - need an auth folder for html & ts file
 - add it to app.module.ts file under declarations `AuthComponent`
 - add a form to the html file
 - register the auth page in the app-routing.module `{ path: 'auth', component: AuthComponent }`
+
+## Switching Between Auth Modes
+- to auth.ts file add `isLoginMode = true;` & `onSwitchMode() {this.isLoginMode = !this.isLoginMode;`
+- in html file add logic to switch between login/sign up `{{ isLoginMode ? 'Login' | 'Sign Up'}}`
+check isLoginMode & if it's true display login text otherwise signup
+- the other button switches modes `{{ isLoginMode ? 'Sign Up' : 'Login' }}`
+
+##
 
 
 
