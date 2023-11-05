@@ -1574,6 +1574,13 @@ once it loads
   - the server is able to validate that token because of it's algorithm & private key which is only known to the server
 
   ## Adding the Auth Page
+- auth page is offered in an unauthenticated state
+- other pages should be locked down if not authed
+- need an auth folder for html & ts file
+- add it to app.module.ts file under declarations `AuthComponent`
+- add a form to the html file
+- register the auth page in the app-routing.module `{ path: 'auth', component: AuthComponent }`
+
 
 
 
