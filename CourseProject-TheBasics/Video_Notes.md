@@ -1643,6 +1643,32 @@ signup(email: string, password: string)
 - then call the AuthService signup function `this.authService.signup(email, password);`
 - the subscribe to the return value (observable) of signup `this.authService.signup(email, password).subscribe( resData => {console.log(resData);}, error => {console.log(error)});`
 
+## Adding a Loading Spinner & Error Handling Logic
+- https://loading.io/css
+- new folder in the shared file called loading-spinner
+  - add a css where you copy pasta the css
+  - add a ts file where you put the html in the template place & export the spinner class
+  - add it to declarations in app.module.ts
+- go back to auth component to hide the form if it's loading 
+  - add `isLoading = false;` property
+  - add it after the if check & data extraction set `isLoading = true;`
+  - then set it back to `isLoading = false` after either recieving the data or recieving the error
+- add an *ngIf="!isLoading"> to the form div to make sure that it onlyshows up if we're not currently loading. If we are loading we show the spinner by adding another div & the app-loading-spinner (also center it)
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+- adding error handling logic 
+  - add a new property in auth.ts
+    `error: string = null;`
+  - add it to the onSubmit function
+    `error => {this.error = `An error occurred!`;`
+- in the html file
+  <div class="alert alert-danger" *ngIf="error">
+      <p> {{ error }}</p>
+  </div>
+  the if statement means that the div will only show up if error is truthy (or has a value)
+
+
 
 
 
