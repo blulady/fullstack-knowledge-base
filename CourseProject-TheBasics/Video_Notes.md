@@ -1593,6 +1593,11 @@ check isLoginMode & if it's true display login text otherwise signup
 - add `(ngSubmit)="onSubmit(authForm)"` to the form & in the ts fil add
 `onSubmit(form: NgForm) {form.reset();` 
 
+## Preparing the Backend
+- the backend just needs to offer endpoints you can use to create new users & to log users in to get such a token
+- in firebase go to Realtime Database under Rules `".read": "auth != null", ".write": "auth != null"`
+- go to build & Authentication & start & Signin method & choose email/password & click enable (just at the top), then save
+
 
 
 
