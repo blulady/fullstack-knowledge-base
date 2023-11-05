@@ -1587,7 +1587,11 @@ once it loads
 check isLoginMode & if it's true display login text otherwise signup
 - the other button switches modes `{{ isLoginMode ? 'Sign Up' : 'Login' }}`
 
-##
+## Handling Form Input
+- add `ngModel name="email" required email` to the email input & `ngModel name="password" required minlength="6"/></div>` to the password input access the input & validate it & for password use the minlength validator
+- `form #authForm="ngForm">` to disable the button if the form is not valid, to get access to the form object by creating a local refrenece (#authForm) & then on the button type submit add `[disabled]="!authForm.valid"`
+- add `(ngSubmit)="onSubmit(authForm)"` to the form & in the ts fil add
+`onSubmit(form: NgForm) {form.reset();` 
 
 
 
