@@ -19,7 +19,7 @@ export class AuthComponent {
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
-      return
+      return;
     }
     const email = form.value.email;
     const password = form.value.password;
@@ -33,8 +33,9 @@ export class AuthComponent {
           console.log(resData);
           this.isLoading = false;
         },
-        error => {
-          this.error = `An error occurred!`;
+        errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage;
           this.isLoading = false;
         }
         );

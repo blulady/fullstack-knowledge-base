@@ -1668,8 +1668,34 @@ signup(email: string, password: string)
   </div>
   the if statement means that the div will only show up if error is truthy (or has a value)
 
+## Improving Error Handling
+- to be more specific about the message
+    errorRes => {
+          console.log(errorRes);
+          switch (errorRes.error.error.message) {
+            case 'EMAIL_EXISTS':
+              this.error = 'This email exists already';
+          }
+  - can see from console logging the object that there is an error.error.message from firebase, can also see info from the docs under common error codes
+  - us a switch statment to see if the error respose is case 'EMAIL_EXISTS" & then assign error to the string, which is now outputed by the auth component html
 
-
+- but errors should be handled by the service (slim component) 
+  - we can pipe on this observable & add rxjs/operators -specifically the catchError operator
+  pipe(catchError(errorRes => {
+      let errorMessage = 'An unknown error occured!';
+      if (!errorRes.error || !errorRes.error.error) {
+        return throwError(errorMessage);
+      }
+      switch (errorRes.error.error.message) {
+        case 'EMAIL_EXISTS':
+          errorMessage = 'This email exists already';
+      }
+      return throwError(errorMessage);
+  - we use throwError because RxJS always needs to return an observable so it wraps the error as an observable
+  - we move the switch statment into catchError
+  - add an defalut errorMessage for unknown errors
+  - if the error we get doesn't have the error.error.message format, our code will fail so the if statement checks to see if the format is the same & if not wrap the response as an observable with throwError & return it
+- back in the auth component we will get the error message & can now set our error equal to the error message we are getting from authService
 
 
 
