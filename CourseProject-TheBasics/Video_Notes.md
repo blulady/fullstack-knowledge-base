@@ -1118,7 +1118,7 @@ EditRecipe
 ## TD: Grouping Form Controls
 
 # Forms
-
+ - go over allowing the selection of items in the list & loading the shopping list items into the form
 ## Intro
 - using the template driven form
 
@@ -1549,4 +1549,31 @@ once it loads
 - the order that you provide your interceptors in the app module matter because that is the order in which they are executed
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true}],
-              
+
+
+
+# Authentication
+
+## How Authentication Works
+- client/browser/user
+- server
+- user enters info & browser sends auth data
+- can't do auth in the browser because that is all exposed code &not stored securely & logic can be changed/edit in the browser
+- can choose to show different parts of our code depending on auth status
+- but no control or validate the authentication status in browser
+- that has to happen in the server, a place where the users can't do anything
+- with traditional websites you woul work with a session but because angular is a single page application 
+  - that means the front is decoupled from the back
+  - angular's router handles the "pages" we visit
+  - JS in the broswer takes over & renders/rerenders pages/parts as our user interface & the current state of the user requires it
+- we reach out to the backend using HTTP requests, to interact with a RESTful API server & we can't use a session because RESTful API's are stateless
+- the backend doesn't render the HTML pages we are on & therefore we don't use sessions, a session would be stored on the server
+- server will validate the user email & password & send the client a token, a JSON web token typically
+- JSON web token is an encoded string, can be unpacked, stored & read by the client 
+  - in local storage of a browser & attaches that token to any request the client sends to the server that needs to be authenticated
+  - the server is able to validate that token because of it's algorithm & private key which is only known to the server
+
+  ## Adding the Auth Page
+
+
+
