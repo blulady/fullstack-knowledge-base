@@ -1598,6 +1598,43 @@ check isLoginMode & if it's true display login text otherwise signup
 - in firebase go to Realtime Database under Rules `".read": "auth != null", ".write": "auth != null"`
 - go to build & Authentication & start & Signin method & choose email/password & click enable (just at the top), then save
 
+## Preparing the Signup Request
+- https://firebase.google.com/docs/reference/rest/auth types of restpoint apis
+  need two methods: Sign up with email/passowrd & Sign in with email/password
+  - grab endpoint from each meathod
+- create an auth.service.ts file
+
+- find the api key on firebase by clicking gear icon (next to project overview), project settings & grab the Web API key & replace the `[API_KEY]` with the key you grabbed (yes replace brackets too)
+- because it's a post request we have to attach the body
+- create a JS object that includes the request body payload (email, password & returnSecureToken)
+    {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    }
+- this function will send an HTTP request to firebase's api but the HTTP Client does nothing without being subscribed to
+- we return the prepared observable (& can clean it up later) & subscribe in the auth.component
+signup(email: string, password: string) 
+    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAI54AvMyYFwhYM0blxlvqf70wDQaXNS-o',
+    {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    })
+
+- we can define the format of the data to get back by creating an interface in auth.service.ts
+    interface AuthResponseData {
+  kind: string;
+  idToken: string;
+  email: string;
+  refreshToken; string;
+  expiresIn: string;
+  localId: string;
+}
+- we can hint at what kind of data we'll get back now that we created the interface `return this.http.post<AuthResponseData>`
+
+
+
 
 
 
