@@ -1633,6 +1633,15 @@ signup(email: string, password: string)
 }
 - we can hint at what kind of data we'll get back now that we created the interface `return this.http.post<AuthResponseData>`
 
+## Sending the Signup Request
+- in auth component under onSubmit
+   - add a catch to prevent someone getting around the disabled form
+    if (!form.valid) {
+      return
+    }
+- inject the AuthService `constructor(private authService: AuthService) {}`
+- then call the AuthService signup function `this.authService.signup(email, password);`
+- the subscribe to the return value (observable) of signup `this.authService.signup(email, password).subscribe( resData => {console.log(resData);}, error => {console.log(error)});`
 
 
 
