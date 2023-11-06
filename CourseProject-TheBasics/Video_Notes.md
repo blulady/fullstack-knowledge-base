@@ -1764,4 +1764,21 @@ signup(email: string, password: string)
 
 TODO: fix error handling for login
 
+## Creating & Storing the User Data
+- need to start storing data about the user (if authenticated), need a user model, will need to verify the token
+- create file user.model.ts in the auth folder
+- get token if the experation date doesn't exist or the current timestamp is bigger then the tokenExpirationDate ( or the tokenExpirationDate is smaller than the current date), we know the token has expired
+- store the user model as a Subject in authe.service.ts
+  - `user = new Subject<User>();`
+  - emit or next a new user when we have  new one or when the token is invalid/expired or we log out
+  - add a new operator to the pipe in signin/login, the tap operator to creat a ndw user
+    `tap(resData => {const user = new User(resData.email, resData.localId, resData.idToken )`
+    - we'll have to generate a date token ourselves by using resdata from firebase (turning it into a number) & get the current time in milliseconds & add the resData (*1000 to make it milliseconds like the JS fucntion) `const expirationDate = new Date(new Date().getTime() + +resData.expiresIn*1000)`, wraping it in a date function will turn it into a date object & not miliseconds
+  - once we created the user object we emit it `this.user.next(user);`
 
+- but now he wants to move everthing into a private function for dry
+    private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
+    const expirationDate = new Date(new Date().getTime() + +expiresIn*1000)
+    const user = new User(email, userId, token, expirationDate);
+        this.user.next(user);}
+  - and tap now looks like `tap(resData => {this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);}` & you add it to sign in too
