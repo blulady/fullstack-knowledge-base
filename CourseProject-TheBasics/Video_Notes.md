@@ -1697,5 +1697,55 @@ signup(email: string, password: string)
   - if the error we get doesn't have the error.error.message format, our code will fail so the if statement checks to see if the format is the same & if not wrap the response as an observable with throwError & return it
 - back in the auth component we will get the error message & can now set our error equal to the error message we are getting from authService
 
+## Sending Login Requests
+- need to start by creating a request for the login endpoint (vs the sign in)
+- go to firebase to https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password grab url
+    `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]` & replace `[API_KEY]` with our api key (pasting over brackets)
+- in authService
+    - creat a login function that takes a email & password `login(email: string, password: string)`
+    - use http.post to post the info to firebase `this.http.post('https...`
+    - create the js object that is going to carry the request body payload 
+        email: email,
+        password: password,
+        returnSecureToken: true
+    - to make the AuthResponseData interface applicable in this case we add registered as an optional property `registered?: boolean;`
+    - now we can type the post request `this.http.post<AuthResponseData>`
+    - then we add the logic to the submit button in the auth.component.ts
+      `this.authService.login(email, password)`
+    - then we can use the logic we used for signup
+      subscribe(
+        resData => {
+          console.log(resData);
+          this.isLoading = false;
+        },
+        errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage;
+          this.isLoading = false;
+        }
+        );
+- or dry:
+  - import AuthResponseData from the authService so we can type the Observable object we are creating `let authObs: Observable<AuthResponseData>`
+        if (this.isLoginMode) {
+      authObs = this.authService.login(email, password);
+    } else {
+      authObs = this.authService.signup(email, password);
+      }
+
+    authObs.subscribe(
+      resData => {
+        console.log(resData);
+        this.isLoading = false;
+      },
+      errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+      );
+
+
+
+
 
 
