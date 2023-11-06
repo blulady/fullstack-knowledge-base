@@ -1744,8 +1744,24 @@ signup(email: string, password: string)
       }
       );
 
+## Login Error Handling
+- dry to use the error handling methods we created for sign in for login too
+- create a private method for handling errors `private handleError(errorRes: HttpErrorResponse){`
+- copy paste the errorhandling from signup & paste it into the new method
+     private handleError(errorRes: HttpErrorResponse){
+    let errorMessage = 'An unknown error occured!';
+      if (!errorRes.error || !errorRes.error.error) {
+        return throwError(errorMessage);
+      }
+      switch (errorRes.error.error.message) {
+        case 'EMAIL_EXISTS':
+          errorMessage = 'This email exists already';
+      }
+      return throwError(errorMessage);
+    }
+- and we pull it out of the signup & use pipe in both signup & login
+  `.pipe(catchError(this.handleError));`
 
-
-
+TODO: fix error handling for login
 
 
