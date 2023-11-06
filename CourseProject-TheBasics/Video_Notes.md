@@ -1801,7 +1801,66 @@ TODO: fix error handling for login
   - `<li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes" >Recipes`
   - `<li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Authenticate`
   - <li class="dropdown" appDropdown *ngIf="isAuthenticated">
-  
 
-
+## Adding the Token to Outgoing Requests
+- we need to add the token to the outgoing request to firebase
+- data-storage.service.ts inject the auth service `private authService: AuthService`
+- just want the token of the currently authenticated user
+  - in authService we add a property `token: string = null;` so that when there is a new user logged in we set their token
+  - or we couls use a BehaviorSubject: also gives subscribers immediate access to the previously emitted value, we can subscribe after the user has been emitted, so we can grab the data even if the user has already been logged in `user = new BehaviorSubject<User>(null);`
+- now we can go back to data-sorage.service
+  - & subscribe so that we only get the user once `this.authService.user.pipe(take(1)).subscribe();`
+  - the one tells RxJS that we only want to take one value from that observable & then automatically unsubscribe
+  - now he's going to merge the two subscriptions (the authService user & the response from the http request that follows)
+  og:
+  fetchRecipes() {
+    this.authService.user.pipe(take(1)).subscribe(user => {
+      
+    });
+    return this.http
+      .get<Recipe[]>(
+        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json'
+      )
+      .pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : []
+            };
+          });
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes);
+        })
+      )
+  }
+- we use exhaustMap which waits for the first observable (user) to complete & then it gives us that first observable (user) & then we return a new observable which will replace our previous observable in the entire observable chain
+  fetchRecipes() {
+    this.authService.user.pipe(take(1), exhaustMap(user => {
+      return this.http
+      .get<Recipe[]>(
+        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json'
+      );
+    }),
+    map(recipes => {
+      return recipes.map(recipe => {
+        return {
+          ...recipe,
+          ingredients: recipe.ingredients ? recipe.ingredients : []
+        };
+      });
+    }),
+    tap(recipes => {
+      this.recipeService.setRecipes(recipes);
+    })
+    )
+  }
+   - we return the HTTP request inside of exhaust, then add the other two operatos as next steps after the exhaust map
+   - to extract the token add a js object to the get request
+   .get<Recipe[]>(
+        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json',
+        {
+          params: new HttpParams().set('auth', user.token)
+        }
 
