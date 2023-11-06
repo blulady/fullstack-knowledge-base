@@ -1782,3 +1782,26 @@ TODO: fix error handling for login
     const user = new User(email, userId, token, expirationDate);
         this.user.next(user);}
   - and tap now looks like `tap(resData => {this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);}` & you add it to sign in too
+
+## Reflecting the Auth State in the UI 
+- forwarding the user to a different rout once logged in (can do it in the component or service)
+- in auth.component.ts
+  - inject the router `private router: Router`
+  - add it to authObs in case of sucess only `this.router.navigate(['/recipe-book']);`
+- disabling the recipes link if not logged in & disable the authenticate link if we are logged in
+- in header html
+  - create a logout button for when we're logged in <li><a style="cursor: pointer;">Logout</a></li>
+- in header ts
+  - now check if the user has a valid token (by subscribing to the subject (user))
+  - inject the authService into the header component `private authService: AuthService)` & subscribe onInitialization `ngOnInit() {this.userSub = this.authService.user.subscribe(this.isAuthenticated = !!user;);` 
+  - create a property so that you can unsubscribe `private userSub: Subscription;` & `isAuthenticated = false;`
+  - then unsubscribe `ngOnDestroy(): void {this.userSub.unsubscribe();`
+  - if we have a use we're subscribed, no user no subscription 
+- in header html
+  - `<li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes" >Recipes`
+  - `<li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Authenticate`
+  - <li class="dropdown" appDropdown *ngIf="isAuthenticated">
+  
+
+
+
