@@ -1956,8 +1956,18 @@ TODO: fix error handling for login
 ## The ShoppingList Feature Module
 - create a shopping-list.module.ts & add @NgModule declarations with the list & edit components
 - in the imports array add RouterModule.forChild([{ path: 'shopping-list', component: ShoppingListComponent},]), also add the CommonMOdule, FormsModule to the imports array before the RouterModule
-- export the class
+- export each of the components you want to share in an exports array
 - then add to the imports in app.module.ts ShoppingListModule
 
+## Understanding Shared Modules
+- things that multiple features use should be kept in the shared file
+- can have multiple shared modules
+- add a shared.module.ts file where you have an NgModule & export the class SharedModule
+- in NgModule
+  - add declarations ( the compoments you will be sharing)
+  - add imports you'll be using (CommonModule)
+- import the shared module into the feature.module.ts file you will be sharing it with (imports array)
+- if you declare a component in one declaration, you must not declare it anywhere else ( so you have to remove them from the app.module.ts if they are in the shared.module.ts)
+- just add teh SharedModule in the app.module.ts
 
 
