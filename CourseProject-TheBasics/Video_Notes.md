@@ -1944,7 +1944,10 @@ TODO: fix error handling for login
 - only modules in the declarations array of a module file will have access to the Modules in the imports array
 - services are the exception, only need to declare these in app.module.ts
 
-
+## Adding Routes to Feature Modules
+- can move the routes for that feature into the feature.module.ts file by adding RouterModule.forChild() into the imports array 
+- can even just move the routes to a feature-routing.module.ts in the feature folder add the routes to an array called Routes, will need to use `@NgModule({imports: [RouterModule.forChild(routes)], exports: [RouterModule]})` & 
+- then import the FeatureRoutingModule to feature.module.ts
 
 
 
