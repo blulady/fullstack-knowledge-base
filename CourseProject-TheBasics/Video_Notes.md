@@ -1980,3 +1980,11 @@ TODO: fix error handling for login
 - services don't need to be exported like other modules
 - import it into app.module.ts
 
+## Adding an Auth Feature Module
+- outsourcing the auth component & its route to a separate feature module
+- add auth.module.ts
+- in declarations add AuthCompoent
+- in imports array add CommonModule & FormsModule & SHaredModule
+- grab the route & add it to the imports `RouterModule.forChild([{path: 'auth', component: AuthComponent}])`
+- in app.module.ts import AuthModule (imports)
+
