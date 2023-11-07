@@ -1917,4 +1917,21 @@ TODO: fix error handling for login
   - vs having to declar 10 different forms dirctive ( the module gives you access)
 - how you add a feature (declarations/providers) depends on the feature itself
 
+## Analyzing the AppModule
+- in app module & the app-routing module we have NgModule
+- declarations is an array of all the custom components, directives & pipes you use in your app
+- the imports array are all the Modules that angular provides
+- if we look into the modules angular provides we would find an NgModule with all the directives it gives us access to in the declarations array
+- the providers array is also in NgModule, where all the services we want to provide
+- if we don't provide the service in NgModule.providers we provide it in root `@Injectable({providedIn: 'root'})` in the service itself as a class decorator
+- bootstrap array defines which component is availabe at the start of the array (index.html & AppComponent), having multiple components would give you different root trees & make each component detached from eachother 
+- in boostrap we have entry components which allows angular to be aware of this component when it needs to create it programmatically
+- app routing module holds the route config (could keep it in app module)
+- we import the router module Angular offers us & use the forRoot Method & export the RouterModule, so that it's availabe in the app.module
+  `@NgModule({imports: [RouterModule.forRoot(appRoutes)], exports: [RouterModule]})`
 
+
+
+
+
+  
