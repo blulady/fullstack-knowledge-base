@@ -1888,12 +1888,23 @@ TODO: fix error handling for login
     )
   }
 
-  ## Attaching the Token with an Interceptor
+## Attaching the Token with an Interceptor
+- since we manipulate all outgoing requests in the same way, use the interceptor to manipulate the code (DRY)
 - create the file auth-interceptor.service.ts
+- the service should impplement the httpInterceptor interface 
+- the httpIntercetor.intercept method needs 2 args HTTP req & next which is HttpHandler
+- then you edit the request by adding the token 
+  - inject the auth service so that you can subscribe to the user object to get the token (only once so we use the take method from rxjs/operators), then to modify the 
+  `return this.authService.user.pipe.(take(1), exhaustMap(user => {const modifiedReq = req.clone({pamams: new HttpParams().set('auth', user.token)}); return next.handle(modifiedReq)}))`
+    return the next handle request & that's where we return the request that has modified the params with the token in the key auth by calling clone
+- add an if statement to return the request unmodified if there was no user `if (!user) {return next.handle(req)}`
+- provide that token in the app.module in the providers Array
+  `{provide: HTTP_INTERCEPTORS, userClass: AuthInterceptorService, multi: true}`
+
+- add a logout to the auth.service.ts
+ `logout() {this.user.next(null); this.router.navigate(['auth'])}`
 
 
 
 
-
-
-
+- 
