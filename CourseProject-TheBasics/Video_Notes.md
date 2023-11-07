@@ -1988,3 +1988,11 @@ TODO: fix error handling for login
 - grab the route & add it to the imports `RouterModule.forChild([{path: 'auth', component: AuthComponent}])`
 - in app.module.ts import AuthModule (imports)
 
+## Understanding Lazy Loading
+- when we're not using lazy loading whenever we visit a page we are loading everything
+- lazy loading only loads code that belongs to the areas of the application that we are visiting
+- app starts faster
+
+## Implimenting Lazy Loading
+
+
