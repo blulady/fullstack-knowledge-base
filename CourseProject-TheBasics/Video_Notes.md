@@ -1994,5 +1994,18 @@ TODO: fix error handling for login
 - app starts faster
 
 ## Implimenting Lazy Loading
+const routes: Routes = [{
+  path: 'your-path',
+  loadChildren: () => import('./your-module-path/module-name.module').then(m => m.ModuleName)
+}];
+
+ensure that in your tsconfig.json file
+"module": "esnext",
+- for lazy loading to work your feature model needs to bring it's own routes (in its separate folder)
+- but in the feature-routing.module.ts the inital path should be an empty string
+- & then in app-routing.module.ts add the path there in the Routes array {path: 'feature', loadChildren:'./feature/feature.module#FeatureModule'}  
+    the featurefilename then the feature.module file (no ts)`#`is followed by the name of the class
+- loadCHildern tells angular to only load the code/content of a module when the user visits the path
+- make sure you only have the import statements you need, otherwise your app will be needlessly slowed down & it defeats the purpose of lazy loading
 
 
