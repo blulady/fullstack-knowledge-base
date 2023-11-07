@@ -1970,4 +1970,13 @@ TODO: fix error handling for login
 - if you declare a component in one declaration, you must not declare it anywhere else ( so you have to remove them from the app.module.ts if they are in the shared.module.ts)
 - just add teh SharedModule in the app.module.ts
 
+## Understanding the Core Module
+- to make the app module leaner, can import them in to app module from the core modue or us providedIn @Injectable 
+- providers array has ShoppingListService, RecipeService & the interceptors
+- put them in another file and then import that file
+- but if you don't want to put them there use @Injectable({ providedIn: 'root'}) -better than adding a core module
+- absolutely have to add interceptors to providers array in app.module.ts 
+- add NgModule, & it's providers array & export class coreModule
+- services don't need to be exported like other modules
+- import it into app.module.ts
 
