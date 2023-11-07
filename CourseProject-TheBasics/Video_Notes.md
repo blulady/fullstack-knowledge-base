@@ -1904,7 +1904,14 @@ TODO: fix error handling for login
 - add a logout to the auth.service.ts
  `logout() {this.user.next(null); this.router.navigate(['auth'])}`
 
+# Angular Modules & Optimizing Angular Apps
+
+## Module Intro
+- NgModule & Optimizations
+
+## What Are Modules
 
 
 
-- 
+
+
