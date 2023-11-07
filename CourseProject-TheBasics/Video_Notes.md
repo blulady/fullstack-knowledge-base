@@ -1953,3 +1953,11 @@ TODO: fix error handling for login
 - dont just add to declarations what you plan on using as a template, but also have to add any routes you load via routing, ig an app component needs to be listed in the feature.module.ts declarations array
 - shouldn't need to export app components in the feature.module.ts export array
 
+## The ShoppingList Feature Module
+- create a shopping-list.module.ts & add @NgModule declarations with the list & edit components
+- in the imports array add RouterModule.forChild([{ path: 'shopping-list', component: ShoppingListComponent},]), also add the CommonMOdule, FormsModule to the imports array before the RouterModule
+- export the class
+- then add to the imports in app.module.ts ShoppingListModule
+
+
+
