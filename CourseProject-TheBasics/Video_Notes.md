@@ -1949,5 +1949,7 @@ TODO: fix error handling for login
 - can even just move the routes to a feature-routing.module.ts in the feature folder add the routes to an array called Routes, will need to use `@NgModule({imports: [RouterModule.forChild(routes)], exports: [RouterModule]})` & 
 - then import the FeatureRoutingModule to feature.module.ts
 
-
+## Component Declarations
+- dont just add to declarations what you plan on using as a template, but also have to add any routes you load via routing, ig an app component needs to be listed in the feature.module.ts declarations array
+- shouldn't need to export app components in the feature.module.ts export array
 
