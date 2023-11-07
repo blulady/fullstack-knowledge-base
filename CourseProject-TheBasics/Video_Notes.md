@@ -1910,8 +1910,11 @@ TODO: fix error handling for login
 - NgModule & Optimizations
 
 ## What Are Modules
-
-
-
+- NgModule or app-routing module
+- ways of bundling angular together so that angular is aware of these featurs: components, directives, services, pipes
+- every angular app needs to have at least one module, the app.module.ts
+- core angular features are included in Angular modues (formsModule) and only load them when needed
+  - vs having to declar 10 different forms dirctive ( the module gives you access)
+- how you add a feature (declarations/providers) depends on the feature itself
 
 
