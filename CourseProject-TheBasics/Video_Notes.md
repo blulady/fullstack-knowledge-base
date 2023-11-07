@@ -2005,7 +2005,10 @@ ensure that in your tsconfig.json file
 - but in the feature-routing.module.ts the inital path should be an empty string
 - & then in app-routing.module.ts add the path there in the Routes array {path: 'feature', loadChildren:'./feature/feature.module#FeatureModule'}  
     the featurefilename then the feature.module file (no ts)`#`is followed by the name of the class
+- `loadChildren: () => import('./your-module-path/module-name.module').then(m => m.ModuleName)` is the new way to call loadChildren
 - loadCHildern tells angular to only load the code/content of a module when the user visits the path
 - make sure you only have the import statements you need, otherwise your app will be needlessly slowed down & it defeats the purpose of lazy loading
+- cannot have the features you are trying to lazily load in NgModules import array (angular will try to load it)
+
 
 
