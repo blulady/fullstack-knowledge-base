@@ -1930,8 +1930,21 @@ TODO: fix error handling for login
 - we import the router module Angular offers us & use the forRoot Method & export the RouterModule, so that it's availabe in the app.module
   `@NgModule({imports: [RouterModule.forRoot(appRoutes)], exports: [RouterModule]})`
 
+## Getting Started With Feature Modules
+- grouping modules by feature ()
+- helps you find things
+- create a folder for the feature
+ - then create a feature.module.ts file very much like th app.module.ts & a class called FeatureModule 
+ - @NgModule() & in the declarations with all the components that pertaine to that feature & then put them into the exports array
+ - then import that FeatureModule into the imports array in the app.module.ts
+
+## Splitting Modules Correctly
+-will need to import things you use in app.module.ts into feature.module.ts imports array like AppRoutingModule, FormsModule, 
+ -- except BrowserModule (only use once) instead use the CommonModule outside of AppModule
+- only modules in the declarations array of a module file will have access to the Modules in the imports array
+- services are the exception, only need to declare these in app.module.ts
 
 
 
 
-  
+
