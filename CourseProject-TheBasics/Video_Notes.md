@@ -2018,3 +2018,14 @@ ensure that in your tsconfig.json file
 - go to app-routing.module & in the import array
 [RouterModule.forRoot(appRoutes)] & add a second arg
 [RouterModule.forRoot(appRoutes), {preloadingStrategy: PreloadAllModules}]
+
+## Services & Modules
+- what is special about services
+- where to provide services, appmodule, appcomponent, eager-loaded/lazy Module
+- when providedIn root, or in appModule the services are provided app-wide (and the same instance of that service)
+- when it's in the app component its available there & for all of that apps dependencies and in each component there are separate instances of that service
+- if a module is eager loaded the service added there will be availabe application wide (same instance)
+- if a service is provided to a lazy loaded module, it gets it's own instance of that service
+    - if you want to have the same service instance app wide for lazy loaded modules use root injector
+- don't provide services in eagerly loaded modules use root injector
+- only provide services in lazily loaded apps if you want a separate instance of the service
