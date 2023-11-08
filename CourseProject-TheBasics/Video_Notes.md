@@ -2010,5 +2010,9 @@ ensure that in your tsconfig.json file
 - make sure you only have the import statements you need, otherwise your app will be needlessly slowed down & it defeats the purpose of lazy loading
 - cannot have the features you are trying to lazily load in NgModules import array (angular will try to load it)
 
+## More Lazy Loading
+- again change the path to 'auth' & add the loadChildren function with the path & delete the import in app-routing.module
+- where the route is located in the feature change the path to an empty string
+
 
 
