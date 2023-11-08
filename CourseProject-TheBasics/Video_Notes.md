@@ -2029,3 +2029,11 @@ ensure that in your tsconfig.json file
     - if you want to have the same service instance app wide for lazy loaded modules use root injector
 - don't provide services in eagerly loaded modules use root injector
 - only provide services in lazily loaded apps if you want a separate instance of the service
+
+## Loading Services Differently
+- created a loggin.service.ts file using @Injectable({providedIn: 'root'}) at app level (doesn't matter because of the injectable)
+- we inject it into the app.component & the shopping-list.component, it uses the same instance
+- if we inject it directly into app.component rather than using @Injectable, same behavior 
+- inject it into the app module & the shopping module, now we are using two different instances because the shopping module is lazy loaded
+  - this inlcudes modules you load into lazy loaded modules (because the loaded modules aren't loaded until the lazy module loads - those provide separate instances)
+  ##### because of these bugs provide services at root or using the @injectable unless you want multiple instances
