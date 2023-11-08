@@ -2014,5 +2014,7 @@ ensure that in your tsconfig.json file
 - again change the path to 'auth' & add the loadChildren function with the path & delete the import in app-routing.module
 - where the route is located in the feature change the path to an empty string
 
-
-
+## Preloading Lazy-Loaded Code
+- go to app-routing.module & in the import array
+[RouterModule.forRoot(appRoutes)] & add a second arg
+[RouterModule.forRoot(appRoutes), {preloadingStrategy: PreloadAllModules}]
