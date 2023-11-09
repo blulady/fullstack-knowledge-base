@@ -2037,3 +2037,23 @@ ensure that in your tsconfig.json file
 - inject it into the app module & the shopping module, now we are using two different instances because the shopping module is lazy loaded
   - this inlcudes modules you load into lazy loaded modules (because the loaded modules aren't loaded until the lazy module loads - those provide separate instances)
   ##### because of these bugs provide services at root or using the @injectable unless you want multiple instances
+
+## Ahead-of-Time Compilation
+- our templates include special angular syntax that only angular can read (ngIf), angular parses the templates & updates the dom depending on the instructions in the template
+- the angular compiler compiles template syntax to JS DOM instructions (happens in the browser) is called Just-in-Time Compilation
+- doesn't necessarily have to be part of your application
+- Ahead-of-Time Compilation when you run the angular compiler during development as part of the build process & not in the browser
+- you do this with `ng build --production` or ``ng build --prod`, doesnt spin up a development server but builds the entire app into a few files that you can then deploy & this will compile your app ahead of time
+- Error `Property control does not exist on type abstract control` recipe-edit.component - an issue with AIT not understanding that it returns a form arry that has a controlled property while other controls don't have a controls property
+  - move it into the typescript file
+    get controls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+    }
+**********????????**********
+
+# Dynanmic COmponents
+
+## Module Intro
+- dynamic components are components that you create dynamcially at run time: alert, overlay etc that happens in response to a user event
+- 
+
