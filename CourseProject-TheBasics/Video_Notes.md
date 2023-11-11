@@ -1157,6 +1157,34 @@ EditRecipe
     `this.signupForm.form.patchValue({userData: {username : suggestedName}})`
     here we access the form object on the signupForm, where we have the patch method to override only specific values
 
+## TD Using Form Data
+ - we create an area to output our form data in html
+      <div class="row" *ngIf="submitted">
+      <div class="col-xs-12">
+        <h3>Your Data</h3>
+        <p>Username: {{user.username}} </p>
+        <p>Mail: {{user.email}} </p>
+        <p>Secret Question: Your first {{user.secretQuestion}}</p>
+        <p>Answer: {{user.answer}}</p>
+        <p>Gender: {{user.gender}} </p>
+      </div>
+- we create a submitted property set to false & then use the *ngIf statement to determine if the information is available for output
+- add a new user property that we set to the form values that we update in the onSubmit function
+      user = {
+        username: '',
+        email: '',
+        secretQuestion: '',
+        answer: '',
+        gender: ''
+      }
+        onSubmit() {
+          this.submitted = true;
+          this.user.username = this.signupForm.value.userData.username;
+          this.user.email = this.signupForm.value.userData.email;
+          this.user.secretQuestion = this.signupForm.value.secret;
+          this.user.answer = this.signupForm.value.questionAnswer;
+          this.user.gender = this.signupForm.value.gender;
+        }
 
 
 
