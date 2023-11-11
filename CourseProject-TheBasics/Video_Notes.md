@@ -1116,6 +1116,24 @@ EditRecipe
       `<p>Your reply: {{ answer }}</p>`
 
 ## TD: Grouping Form Controls
+- if we want to group infomation we get back from the form add (becaues our form is big or we wanted the status of individual groups of inputs) just add to the div that includes the info you want grouped
+  `ngModelGroup="groupName"` in the html file at the desired div
+  - will change the set up in controls, we now have a groupName with all the properties you have on controls like valid & touched
+  - can check the validity of this new control (get access to the JS representation) by adding a local reference to the element which holds the ngModelGroup directive
+  `#groupName="ngModelGroup"` ig <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+ - can output an error if the group is invalid `<p *ngIf="!userData.valid && userData.touched">User Data is invalid</p>`
+
+
+ ## TD: Handling Radio Buttons
+ 
+
+
+
+
+
+
+
+
 
 # Forms
  - go over allowing the selection of items in the list & loading the shopping list items into the form
@@ -2056,4 +2074,5 @@ ensure that in your tsconfig.json file
 ## Module Intro
 - dynamic components are components that you create dynamcially at run time: alert, overlay etc that happens in response to a user event
 - 
+
 
