@@ -1125,7 +1125,20 @@ EditRecipe
 
 
  ## TD: Handling Radio Buttons
- 
+ - add a property that is a list of your radio butoon options to the component ts file ig:
+    `genders = ['male', 'female'];`
+ - now we output the options in the html file
+    `<div class="radio" *ngFor="let gender of genders">`
+ - have to loop through the options
+    `<label>
+            <input
+            type="radio"
+            name="gender"
+            ngModel [value]="gender"
+            required>
+            {{ gender }}
+          </label>`
+ - set a default button by using one way binding
 
 
 
