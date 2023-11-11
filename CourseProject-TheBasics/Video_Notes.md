@@ -1140,8 +1140,22 @@ EditRecipe
           </label>`
  - set a default button by using one way binding
 
-
-
+## TD: Setting & Patching Form Values
+- we have access to the signupForm through @ViewChild
+- Setting form Values with setValue method;
+      this.signupForm.setValue({
+        userData: {
+          username: suggestedName,
+          email: ''
+        },
+        secret: 'pet',
+        questionAnswer: '',
+        gender: 'male'
+      })
+  - here we pass a JS object exactly matching our form
+- Patching form Values with patchValue
+    `this.signupForm.form.patchValue({userData: {username : suggestedName}})`
+    here we access the form object on the signupForm, where we have the patch method to override only specific values
 
 
 
