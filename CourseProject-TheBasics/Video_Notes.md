@@ -1186,7 +1186,17 @@ EditRecipe
           this.user.gender = this.signupForm.value.gender;
         }
 
-
+## TD: Resetting Forms
+- add `this.signupForm.reset();` to the submit function
+- on our form (signupForm that we fetched with ViewChild) we just call the reset method. Will reset state like valid, touched, & dirty
+- can passs in the same object as in setValue() to reset() which will then reset the form to specific values
+        this.signupForm.reset({userData: {
+          username: 'sarah',
+          email: 'myemail@email.com',},
+          secret: 'pet',
+          questionAnswer: 'sex',
+          gender: 'female'
+        });
 
 
 
