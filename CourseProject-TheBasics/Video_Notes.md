@@ -1281,8 +1281,24 @@ EditRecipe
 - so we have to restructure our html & put userName & userEmail inside a new div with a formGroupName called user data, wraping them both `<div formGroupName="userData">` and then change the get path to include userData `signupForm.get('userData.username')` in `<span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched" class="help-block">Please enter a valid username!</span>`
 - you separate objects by using `.`
 
-
-
+## Reactive: Arrays of Form Controls(FormArray)
+- give the array it's own div
+- we are going to dynamically add a control to the form (technically add this control to an array of controls) we add a click listener to the button `<button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>` 
+- we create a new type of control & add it to the overall form `'gender': new FormControl('female'), 'hobbies': new FormArray([])`
+- we use the FormArray so that the user can add as many as they like, it holds an array of controls
+- when we click on Add Hobby we want to a new hobby to the array `(<FormArray>this.signupForm.get('hobbies')).push(control)` 
+- will have to specifically type cast so need `<FormArray>`
+- need the outer parentheses to tell angular to treat everything inside the parentheses
+as a form array
+- but we also have to create the control that is going to be added
+  `const control = new FormControl(null, Validators.required);`
+- then have to sync the ts with the html by defining the formArrayName as hobbies on the div we created
+  `<div formArrayName="hobbies">`
+- on the FormGroup we add an ngFor loop to loop through all the hobby controls & need to extract the index of the current iteration,  
+  `*ngFor="let hobbyControl of getControls(); let i = index">`
+- will need to assign this input to one of these dynamically created controls so that on this import we can add the form-controls CSS class & add formControlName to sync the input with the dynamically created input, the input name will be the index in the array
+  `<input type="text" class="form-control" [formControlName]="i">`
+  - we use property binding because we are not passing a string but a local variable "i" to pass this index 
 
 # Forms
  - go over allowing the selection of items in the list & loading the shopping list items into the form
