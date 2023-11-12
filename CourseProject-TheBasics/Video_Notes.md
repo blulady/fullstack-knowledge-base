@@ -1238,6 +1238,15 @@ EditRecipe
   2. a single validator or an array of validators to apply to this control
   3. potential asynchronus validators
 
+## Reactive: Syncing HTML and Form
+- the actual form lives in the HTML input, need to sync our HTML inputs & ts form
+- if we don't add directives, angular will pick up that we have a form & creates a form for us which we don't want because we already made one
+- add directives to overwrite default behavior
+  1. to form div add the formGroup directive & connect it to our form we created in the ts file `<form [formGroup]="signupForm">`
+  2. to tell angluar which controls should be connected we use the formControlName directive, in the input div we define the name `formControlName="username"`
+    A. we can use property binding by wrapping form control in brackets & wrapping username in single quotes `[formControlName]="'username'"` but y?
+  3. Radio inputs work the same as other inputs `[value]="gender">{{ gender }}`, here we property bind our html value to the gender variable we defined in our ts file
+
 
 
 
