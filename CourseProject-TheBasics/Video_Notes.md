@@ -1215,7 +1215,12 @@ EditRecipe
   `*ngIf='!email.valid && email.touched'`
 
 ## Introduction to the Reactive Approach
-- 
+## Reactive Setup
+- form created programatically in TypeScript
+- add `ReactiveFormsModule` to the import array in app.module.ts
+- create a property in the app.component.ts class to hold your form
+  `signupForm: FormGroup;` import FormGroup from angular/forms
+  - a form is just a group of controls
 
 
 
