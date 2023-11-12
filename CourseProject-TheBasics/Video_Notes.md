@@ -1268,8 +1268,18 @@ EditRecipe
             class="help-block">Please enter a valid username!</span>`
   - we can get access to the username key value pair through our ts signupForm by using the get method & pass in either the name or the path name
   - the css classes are also still added so you can `input.ng-invalid.ng-touched{border: 1px solid red;}` to the css & access ng-invalid, ng-touched
-  
 
+## Reactive: Grouping Controls
+- we put our userdata into a userdata group
+    this.signupForm = new FormGroup({
+        'userData': new FormGroup({
+          'username': new FormControl(null, Validators.required),
+          'email': new FormControl(null, [Validators.required, Validators.email]),
+        }),
+        'gender': new FormControl('female')
+      });
+- so we have to restructure our html & put userName & userEmail inside a new div with a formGroupName called user data, wraping them both `<div formGroupName="userData">` and then change the get path to include userData `signupForm.get('userData.username')` in `<span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched" class="help-block">Please enter a valid username!</span>`
+- you separate objects by using `.`
 
 
 
