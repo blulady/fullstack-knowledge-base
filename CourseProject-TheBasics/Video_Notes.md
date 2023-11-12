@@ -1247,7 +1247,10 @@ EditRecipe
     A. we can use property binding by wrapping form control in brackets & wrapping username in single quotes `[formControlName]="'username'"` but y?
   3. Radio inputs work the same as other inputs `[value]="gender">{{ gender }}`, here we property bind our html value to the gender variable we defined in our ts file
 
-
+## Reactive: Submiting the Form
+- use the ngSubmit directive on the form element because we still want to react to this default submit event which is fired by Html & JS `<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">`
+- then create the method in the corrisponding ts file
+- we can access the object we created under FormGroup.value
 
 
 
