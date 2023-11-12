@@ -1222,6 +1222,24 @@ EditRecipe
   `signupForm: FormGroup;` import FormGroup from angular/forms
   - a form is just a group of controls
 
+## Reactive: Creating a Form in Code
+- in ts file we are going to define our new control group in the ngOnInit method
+    - use method because it's a lot of code, & want it to initalize before rendering the template
+- we define our signupForm as a new form group & that form group is made of controls
+- controls are basically key-value pairs we pass to the overall form group, we let angular know these are controls by defining them as new form controls
+        ngOnInit(): void {
+          this.signupForm = new FormGroup({
+            'username': new FormControl(null),
+            'email': new FormControl(null),
+            'gender': new FormControl('female')
+          });
+- FormControl constructor takes 3 arguments
+  1. the inital state/value of the control (where default value would go as a string)
+  2. a single validator or an array of validators to apply to this control
+  3. potential asynchronus validators
+
+
+
 
 
 # Forms
