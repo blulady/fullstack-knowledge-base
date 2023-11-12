@@ -1252,6 +1252,15 @@ EditRecipe
 - then create the method in the corrisponding ts file
 - we can access the object we created under FormGroup.value
 
+## Reactive: Adding Validation
+- in the template driven approach we would add the validators to the template
+- in the reactive approach you configure the form in the ts file not the html template
+- in reactive approach you are only syncing the ts file with the template
+- when creating the new FormControl key-value pairs, you pass the validators in as argument or an array of arguments 
+  `'username': new FormControl(null, Validators.required),`
+  `'email': new FormControl(null, [Validators.required, Validators.email])`
+- don't call it on init (add parentheses after), instead we pass the reference to the method so angular will execute the method whenever it detects that the input of the FormControl changed
+
 
 
 # Forms
