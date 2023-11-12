@@ -1261,6 +1261,17 @@ EditRecipe
   `'email': new FormControl(null, [Validators.required, Validators.email])`
 - don't call it on init (add parentheses after), instead we pass the reference to the method so angular will execute the method whenever it detects that the input of the FormControl changed
 
+## Reactive: Getting Access to Controls
+- use the form status to display messages
+- in template driven approach we would place a local reference `#username="ngModel"` but because it is the reactive approach it's not register via NgModel
+`<span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
+            class="help-block">Please enter a valid username!</span>`
+  - we can get access to the username key value pair through our ts signupForm by using the get method & pass in either the name or the path name
+  - the css classes are also still added so you can `input.ng-invalid.ng-touched{border: 1px solid red;}` to the css & access ng-invalid, ng-touched
+  
+
+
+
 
 
 # Forms
