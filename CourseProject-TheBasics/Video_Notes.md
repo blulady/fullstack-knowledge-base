@@ -1198,6 +1198,25 @@ EditRecipe
           gender: 'female'
         });
 
+## Assignment: Template-Driven Forms
+- create the html using form, labels & inputs
+- make sure the FormsModule is in the imports array in the app.module.ts
+- add ngModel to the controls/inputs * ngForm to the form
+- add local references to the div `#email`
+- add a subscriptions array in the ts file `subscriptions = ['Basic', 'Advanced', 'Pro']` & then an corrisponding *ngFor loop in the html
+  `<options *ngFor="let subscription of subscriptions"> `
+  & use property binding to 
+  `[value]="subscription"> {{ subscription }}</option>`
+  set a default value by adding a property in the .ts file
+  `selectedSubscription = 'Advanced'`
+  then add binding one way by putting brackets around the ngModel in the select div
+  `[ngModel]='selectedSubscripton' `
+- Add help blocks by adding *ngIf statments to the divs, verifying the that the inputs are valid by checking the local references we added earlier
+  `*ngIf='!email.valid && email.touched'`
+
+## Introduction to the Reactive Approach
+- 
+
 
 
 # Forms
