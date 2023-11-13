@@ -2327,3 +2327,7 @@ ensure that in your tsconfig.json file
 - then we create the second state `state('highlighted', style({backgroundColor: 'blue',transform: 'translateX(100px)'}))`
 
 ## Switching between States
+- We have an animate button we are going to use to initate changes `<button class="btn btn-primary">Animate!</button>`
+- so we create the onAnimate function to go with it `onAnimate() {this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal'}`
+- and it doesn't work because you can't switch between css syntaxes in the states they have to be the same so  we change the second state syntax to match the first
+  `state('highlighted', style({'background-color' : 'blue',`
