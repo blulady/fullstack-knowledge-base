@@ -2313,4 +2313,17 @@ ensure that in your tsconfig.json file
 - apply animations to a specific div
 
 ## Animations Triggers and State
-- 
+- pass in animations to the component decorator in app.components.ts
+    @Component({
+      selector: 'app-root',
+      templateUrl: './app.component.html',
+      animations: [
+- each animation has a trigger, a function to tell angular to find a certain name in our dom/template which should trigger a certain animation
+    `animations: [trigger('`
+- in our template we place `[@divState]="state"` and pass it to the trigger function `trigger('divState'`
+    - state is a property we created in the ts `state='normal';`
+- the second argument we pass in to trigger is an array of the two states we want to animate between CSS styles
+- we start with the inital state `state('normal', style({'background-color': 'red',transform: 'translateX(0)'})),`
+- then we create the second state `state('highlighted', style({backgroundColor: 'blue',transform: 'translateX(100px)'}))`
+
+
