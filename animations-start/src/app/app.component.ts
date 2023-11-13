@@ -1,8 +1,14 @@
+import { trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  animations: [
+    trigger('divState', [
+
+    ])
+  ]
 })
 export class AppComponent {
   list = ['Milk', 'Sugar', 'Bread'];
