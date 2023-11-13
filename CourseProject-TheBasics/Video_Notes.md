@@ -1347,7 +1347,22 @@ as a form array
                 (status) => console.log(status)
               )
 
+## Reactive: Setting and Patching Values
+- you could use this to add default values to the whole form
+        this.signupForm.setValue({
+            'userData': {
+              'username': 'Max',
+              'email': 'max@test.com'
+            },
+            'gender': 'male',
+            'hobbies': []
+          });
 
+- you could use this to add a single default value
+        this.signupForm.patchValue({
+            'userData': {
+              'username': 'Anna',
+            }}
 
 # Forms
  - go over allowing the selection of items in the list & loading the shopping list items into the form
