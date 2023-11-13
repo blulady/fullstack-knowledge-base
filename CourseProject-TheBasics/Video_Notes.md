@@ -1313,6 +1313,14 @@ as a form array
 - to add the validator `'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)])`
   - will need to bind this with the bind method because angular is calling the method from outside the class when it checks the validity 
 
+## Reactive: Using Error Codes
+- To see the errors FormGroup.userData.controls.username.errors (this is where angular adds the error code for the control/field (the individual controls on the errors object))
+- The error codes can be used to see the right error messages
+- `<span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is invalid</span>`
+    - here we add another span with an ngIf so it only show's up if the error contains 'nameIsForbidden'
+- <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required!</span>
+    - here we add another span with an ngIf so it only show's up if the error contains required
+
 
 
 # Forms
