@@ -1337,7 +1337,15 @@ as a form array
   - in the end return the promise ` return promise;`
 - Now we add the validator forbiddenEmails to the formGroup in the third argument slot that's designated for async functions `'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),`
 
-
+## Reactive: Reacting to Status or Value Changes
+- you can track form state in general by either valueChanges or statusChanges
+- value/statusChanges is on the signupForm & each control of this form, these are the two observables you can listen to
+        this.signupForm.valueChanges.subscribe(
+                (value) => console.log(value)
+              )
+        this.signupForm.statusChanges.subscribe(
+                (status) => console.log(status)
+              )
 
 
 
