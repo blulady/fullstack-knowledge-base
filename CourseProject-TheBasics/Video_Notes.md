@@ -1300,6 +1300,21 @@ as a form array
   `<input type="text" class="form-control" [formControlName]="i">`
   - we use property binding because we are not passing a string but a local variable "i" to pass this index 
 
+## Reactive: Creating Custom Validators
+- let's say we have a username we don't want the user to use
+- add a property to the class `forbiddenUsernames = ["Chris", "Anna"];`
+- a validator is just a function that Angular executes automatically when it checks the validity of the FormControl (whenever you change that control)
+- then add a forbiddenNames function that takes a control argument to check & a validator needs to return some for Angular be able to handle the return value correctly
+  `forbiddenNames(control: FormControl): {[s: string]: boolean}`
+  - the `{[s:string]: boolean}`is a key which can be a string paired with a boolean that let's typescript know if that string is in forbiddenUsernames
+  - `if (this.forbiddenUsernames.indexOf(control.value) !== -1)`
+  indexOf searches the string (control.value we pass in) & returns the index of the first occurrence of the specified substring or a -1 if there is nothing
+  - and then return `return {'nameIsForbidden': true}` if the value returned is not -1 and nothing if it is
+- to add the validator `'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)])`
+  - will need to bind this with the bind method because angular is calling the method from outside the class when it checks the validity 
+
+
+
 # Forms
  - go over allowing the selection of items in the list & loading the shopping list items into the form
 ## Intro
