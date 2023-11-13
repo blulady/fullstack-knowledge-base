@@ -1363,6 +1363,9 @@ as a form array
             'userData': {
               'username': 'Anna',
             }}
+- reset form by adding this.signupForm.reset() to onSubmit
+
+## Assignment: Reactive Form
 
 # Forms
  - go over allowing the selection of items in the list & loading the shopping list items into the form
@@ -2305,3 +2308,9 @@ ensure that in your tsconfig.json file
 - 
 
 
+# Angular Animations
+## Setting up a Starting Project
+- apply animations to a specific div
+
+## Animations Triggers and State
+- 
