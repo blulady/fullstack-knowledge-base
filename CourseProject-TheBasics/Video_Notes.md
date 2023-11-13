@@ -1321,6 +1321,24 @@ as a form array
 - <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required!</span>
     - here we add another span with an ngIf so it only show's up if the error contains required
 
+## Creating a Custom Async Validator
+- might need to reachout to the web server to get information to validate
+- so we need async validators
+- create a function just like the other validator function but instead it returns a Promise or an Observable, like async functions do
+  `forbiddenEmails(control: FormControl): Promise<any> | Observable<any>`
+- create a promise in the validator 
+   `const promise = new Promise<any>((resolve, reject) =>`
+   - and like all promises it receives a function with resolve & reject as arguments we can execute in that function
+- set a timeout in the function that returns a response after 1 & a half seconds & the function that gets executed after the timeout
+  `setTimeout(() => {if (control.value === 'test@test.com') {resolve({'emailIsForbidden': true});} else {resolve(null);}}, 1500)`
+  - the anonymous function that gets executed after the timeout
+  `{if (control.value === 'test@test.com') {resolve({'emailIsForbidden': true});} else {resolve(null);}}`
+  - we check if control value equals test@test.com (the forbidden email), if that is the case validation fails & the function returns `{resolve({'emailIsForbidden': true}` otherwise it returns `null` 
+  - in the end return the promise ` return promise;`
+- Now we add the validator forbiddenEmails to the formGroup in the third argument slot that's designated for async functions `'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),`
+
+
+
 
 
 # Forms
