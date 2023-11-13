@@ -1,4 +1,4 @@
-import { trigger } from '@angular/animations';
+import { state, style, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,12 +6,20 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   animations: [
     trigger('divState', [
-
+      state('normal', style({
+        'background-color': 'red',
+        transform: 'translateX(0)'
+      })),
+      state('highlighted', style({
+        backgroundColor: 'blue',
+        transform: 'translateX(100px)'
+      }))
     ])
   ]
 })
 export class AppComponent {
   list = ['Milk', 'Sugar', 'Bread'];
+  state ='normal';
 
     onAdd(item) {
       this.list.push(item);
