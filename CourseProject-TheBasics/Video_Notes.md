@@ -2331,3 +2331,12 @@ ensure that in your tsconfig.json file
 - so we create the onAnimate function to go with it `onAnimate() {this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal'}`
 - and it doesn't work because you can't switch between css syntaxes in the states they have to be the same so  we change the second state syntax to match the first
   `state('highlighted', style({'background-color' : 'blue',`
+
+## Transitions
+- pass a 3rd argument into trigger is the transition funtion that describes how the transition from one state to another state should look, 
+- transition takes teh inital state & then the end state (can have multiple transition arguments)
+      `transition('normal => highlighted', animate(300)),`
+      `transition('highlighted => normal', animate(800))`
+    - transition takes a second argument, which is another function animate that takes milliseconds of how long 
+
+
