@@ -2326,4 +2326,4 @@ ensure that in your tsconfig.json file
 - we start with the inital state `state('normal', style({'background-color': 'red',transform: 'translateX(0)'})),`
 - then we create the second state `state('highlighted', style({backgroundColor: 'blue',transform: 'translateX(100px)'}))`
 
-
+## Switching between States
