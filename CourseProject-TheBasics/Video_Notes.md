@@ -2339,4 +2339,19 @@ ensure that in your tsconfig.json file
       `transition('highlighted => normal', animate(800))`
     - transition takes a second argument, which is another function animate that takes milliseconds of how long 
 
+## Advanced Transitions
+- if you wanted it to take the same amount of time in both directions just add a two way arrow `<=>`
+  `transition('normal <=> highlighted', animate(300)),`
+- if you want to add styles between one transition 
+  - we create a new `<div style="width: 100px; height: 100px;" [@wildState]="state"></div>` & we are binding it to the wildState animation trigger
+  - we create a new property in the ts file `wildState = 'normal'`
+  - we add a third state `state('shrunken', style({'background-color' : 'green' transform: 'translateX(0) scale(0.5)'})),`
+  - we connect the shrink button `(click)="onShrink()"` with a funciton in the ts 
+    `onShrink() {this.wildState = 'shrunken';}`
+  - add functionality to onAnimate
+    `this.wildState == 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';`
+  - we need a third transition on wildSate `transition('shrunken <=> *', animate(500))` we use the astrik to say that it doesn't matter which state it is in (highlighted/normal to switch to shrunken)
+
+
+
 
