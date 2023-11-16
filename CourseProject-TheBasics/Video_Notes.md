@@ -2366,6 +2366,24 @@ ensure that in your tsconfig.json file
     - the important part is to end with the style-less animate function
 
 ## The Void State
-
-
+- animating the addition to a list or removing of an item
+- we create a new trigger the list1 trigger
+  trigger('list1', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *', [style({opacity: 0, transform: 'translateX(-100px)'}), animate(300)]),
+      transition('* => void', [style({opacity: 0, transform: 'translateX(-100px)'}), animate(300, style({transform: 'translateX(100px)', opacity: 0}))])
+    ]),
+  - we add only one state in, the other state is we removed it or it isn't on the list yet, `void`
+  - we add the final style `style({opacity: 1,transform: 'translateX(0)'})`
+  - then we add transitions, the first transition is when it comes in (from `void`), when we add it to the dom
+  - in the html file add to the list element `[@list1]` as a trigger, we don't bind it to anything
+  - animate from not existance to any state `transition('void => *'`
+  - then we have to add the inital style `style({opacity: 0, transform: 'translateX(-100px)'})` that it gets when it enters the dom
+  - then it transitions to it's final style `animate(300)`
+  - then for leaving we add a new transition, and it goes from any state to void `transition('* => void', `
+  - since we start with the state it already has, no need to define a starting state, instead the annimation should have a style state because we don't need it to snap to some state at the end  
+  - style is the second argument of animate `style({transform: 'translateX(100px)', opacity: 0}` move it to the right & fade it out 
 
