@@ -2352,6 +2352,20 @@ ensure that in your tsconfig.json file
     `this.wildState == 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal';`
   - we need a third transition on wildSate `transition('shrunken <=> *', animate(500))` we use the astrik to say that it doesn't matter which state it is in (highlighted/normal to switch to shrunken)
 
+## Transition 
+- we can control timing & control the whole animation & all of it's styles durning that animation `transition('shrunken <=>, animate(500, style())) `
+- as we can define a style in a state we can do the same for an animation by passing a js object to the style funciton
+  `animate(500, style({ borderRadius: '50px'})))`
+  to do this we pass a second argurment to the transition function
+- to get a more complex animation, chain muiltiple styles together in an array as the second argument for the transition function
+    `transition('shrunken <=> *', [style({'background-color': 'orange','borderRadius': '0px'}),animate(1000, style({borderRadius: '50px'})),animate(500)])`
+  - this array allows us to define different phases in that transition starting phase
+    - starting with the background-color: orange
+    - then we call animate `animate(1000, style({borderRadius: '50px'})),animate(500)])`
+    - and then an animate at the end without a style that indicates transition to the end state `animate(500)])`
+    - the important part is to end with the style-less animate function
+
+## The Void State
 
 
 
