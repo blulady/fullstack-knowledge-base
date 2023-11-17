@@ -1,4 +1,4 @@
-import { state, style, trigger, animate, transition } from '@angular/animations';
+import { state, style, trigger, animate, transition, keyframes } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -51,7 +51,18 @@ import { Component } from '@angular/core';
       transition('void => *', [style({opacity: 0, transform: 'translateX(-100px)'}), animate(300)]),
       transition('* => void', [style({opacity: 0, transform: 'translateX(-100px)'}), animate(300, style({transform: 'translateX(100px)', opacity: 0}))])
     ]),
-  ]
+    trigger('list2', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *', [animate(1000, keyframes([style({transform: 'translateX(-100px)', opacity: 0, offset: 0}),
+                                                                style({transform: 'translateX(-50)', opacity: 0.5, offset: 0.3}),
+                                                                style({transform: 'translateX(-20)', opacity: 1, offset: 0.8}),
+                                                                style({transform: 'translateX(0)', opacity: 1, offset: 1})])),
+      transition('* => void', [style({opacity: 0, transform: 'translateX(-100px)'}), animate(300, style({transform: 'translateX(100px)', opacity: 0}))])
+    ])
+  ])]
 })
 export class AppComponent {
   list = ['Milk', 'Sugar', 'Bread'];

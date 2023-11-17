@@ -2387,3 +2387,14 @@ ensure that in your tsconfig.json file
   - since we start with the state it already has, no need to define a starting state, instead the annimation should have a style state because we don't need it to snap to some state at the end  
   - style is the second argument of animate `style({transform: 'translateX(100px)', opacity: 0}` move it to the right & fade it out 
 
+
+## Using Keyframes for Animations
+- more detailed control over the animation process
+- define some key frames to specify what the animation looks like at what state
+- create a new trigger `[list2]` 
+- create it in the ts file & in the tranistion function we call the animation method & pass in the keyframes method `trigger('list2', [state('in', style({opacity: 1,transform: 'translateX(0)'})),transition('void => *', [animate(1000, keyframes()`
+- now we can control which state can take how long by defineing styes we pass in to keyframes
+- we start with the end state `keyframes([style({transform: 'translateX(-100px)', opacity: 0, offset: 0})`
+- then we add the next step in the transition
+  `style({transform: 'translateX(-50)', opacity: 0.5, offset: 0.3}),`
+- without offset, keyframes will split the time eveningly between transitions
