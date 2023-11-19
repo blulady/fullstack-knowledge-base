@@ -2413,3 +2413,10 @@ ensure that in your tsconfig.json file
     - create a function in the ts file to console log the event
     `animationsStarted(event) {console.log(event);`
     - inside we see what's inside the event obect & it has a fromState, a toState, and totalTime
+
+# Deploying an Angular App
+## Deployment Preperation & Steps
+  1. use/check environment variables
+  2. polish & test code
+  3. `ng build --prod` build you application: compile your ts into js, bundle code together, translate it into angular language, bundle into the smallest amount of code possible (uses ahead of time compilation)
+  4. Deploy build artifacts to static host (host that runs JS, HTML, CSS but no server)
