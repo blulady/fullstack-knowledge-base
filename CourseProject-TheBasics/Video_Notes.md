@@ -2398,3 +2398,8 @@ ensure that in your tsconfig.json file
 - then we add the next step in the transition
   `style({transform: 'translateX(-50)', opacity: 0.5, offset: 0.3}),`
 - without offset, keyframes will split the time eveningly between transitions
+
+## Grouping Transitions
+- If you want to have both animations at the same time but with different timings so they don't wait for one animation to finish before starting the next >>> GROUP
+- in the group method, you pass an array of animations we want to perform sychronously
+`transition('* => void', [group([animate(300, style({color: 'red'})),animate(800, style({transform: 'translateX(100px)', opacity: 0}))`
