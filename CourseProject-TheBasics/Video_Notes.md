@@ -2403,3 +2403,13 @@ ensure that in your tsconfig.json file
 - If you want to have both animations at the same time but with different timings so they don't wait for one animation to finish before starting the next >>> GROUP
 - in the group method, you pass an array of animations we want to perform sychronously
 `transition('* => void', [group([animate(300, style({color: 'red'})),animate(800, style({transform: 'translateX(100px)', opacity: 0}))`
+
+## Using Animation Callbacks
+- there are some call back functions included in our animations that we can listen to
+  `(@divState.start)="animationStarted($event)"` or `(@divState.done)`
+    - here we set up event binding with the @ symbol to indicate animations
+    - to create a trigger that will be called whenever the animation starts (or ends)
+    - we pass the event to the function to see what's inside of it 
+    - create a function in the ts file to console log the event
+    `animationsStarted(event) {console.log(event);`
+    - inside we see what's inside the event obect & it has a fromState, a toState, and totalTime
